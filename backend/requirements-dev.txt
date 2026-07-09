@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest
+hypothesis
+moto[all]
+pytest-cov
+pytest-mock

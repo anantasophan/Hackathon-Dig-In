@@ -1,0 +1,64 @@
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# ─── Node / Frontend ──────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+frontend/.env.development
+!frontend/.env.example
+
+# ─── AWS / CDK ────────────────────────────────────────────────────────────────
+cdk.out/
+backend/cdk.out/
+.cdk.staging/
+*.cdk.json.bak
+
+# ─── Secrets / Credentials ────────────────────────────────────────────────────
+*.pem
+*.key
+*.p12
+credentials
+.aws/
+aws-exports.js
+amplifyconfiguration.json
+amplifyconfiguration.ts
+
+# ─── IDE / OS ─────────────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Test / Coverage ──────────────────────────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+.hypothesis/
+*.log
+
+# ─── Kiro internal (keep specs, exclude cache) ────────────────────────────────
+.kiro/hooks/
+.kiro/settings/
+
+# ─── Nested repo (pushed separately) ─────────────────────────────────────────
+Hackathon-Dig-In/

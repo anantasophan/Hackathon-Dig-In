@@ -1,0 +1,30 @@
+[project]
+name = "campaign-insight-generator-backend"
+version = "0.1.0"
+description = "Campaign Insight Generator - Backend services"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3",
+    "pyathena",
+    "pydantic",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "hypothesis",
+    "moto[all]",
+    "pytest-cov",
+    "pytest-mock",
+]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["."]

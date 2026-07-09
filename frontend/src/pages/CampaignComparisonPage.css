@@ -1,0 +1,34 @@
+/**
+ * CampaignComparisonPage.css — Page-level styles for the Campaign Comparison page.
+ *
+ * Most layout uses inline styles in the component; this file covers
+ * the spinner keyframe animation and responsive overrides.
+ *
+ * Requirements: 2.1, 2.2, 2.3, 2.4, 2.5
+ */
+
+/* Spinner keyframe — referenced by the inline style animation property */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive: on narrow viewports, stack group-by controls vertically */
+@media (max-width: 768px) {
+  .comparison-group-by-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .comparison-chip-row {
+    flex-direction: column;
+  }
+}
+
+/* Print: hide controls, show only table and chart */
+@media print {
+  .comparison-controls-card {
+    display: none;
+  }
+}

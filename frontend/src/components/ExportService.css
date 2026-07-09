@@ -1,0 +1,232 @@
+/* ExportService.css — Campaign Insight Generator
+   Inline button group + toast notification styles.
+   Color scheme matches the rest of the dashboard: #1a365d, #f7fafc, #e2e8f0
+   ----------------------------------------------------------------------- */
+
+/* ── Wrapper ─────────────────────────────────────────────────────────────── */
+.export-service {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  font-size: 13px;
+}
+
+/* ── Button group ────────────────────────────────────────────────────────── */
+.export-service__group {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #2b6cb0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Export trigger button */
+.export-service__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  background-color: #1a365d;
+  color: #ffffff;
+  border: none;
+  border-right: 1px solid #2b6cb0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.export-service__btn:hover:not(:disabled) {
+  background-color: #2b6cb0;
+}
+
+.export-service__btn:active:not(:disabled) {
+  background-color: #2c5282;
+}
+
+.export-service__btn:focus-visible {
+  outline: 2px solid #90cdf4;
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.export-service__btn:disabled {
+  background-color: #718096;
+  border-right-color: #4a5568;
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+/* Format selector */
+.export-service__select {
+  padding: 7px 10px 7px 8px;
+  background-color: #2b6cb0;
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 28px;
+  transition: background-color 0.15s ease;
+}
+
+.export-service__select:hover:not(:disabled) {
+  background-color: #2c5282;
+}
+
+.export-service__select:focus-visible {
+  outline: 2px solid #90cdf4;
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.export-service__select:disabled {
+  background-color: #4a5568;
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+/* Option elements inherit system defaults; color may vary across browsers */
+.export-service__select option {
+  background-color: #ffffff;
+  color: #2d3748;
+}
+
+/* ── Screen-reader-only label ────────────────────────────────────────────── */
+.export-service__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Toast notification ──────────────────────────────────────────────────── */
+.export-toast {
+  position: absolute;
+  /* Positioned below the button group, right-aligned */
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border-left-width: 4px;
+  border-left-style: solid;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-size: 13px;
+  line-height: 1.45;
+  animation: export-toast-in 0.2s ease-out;
+}
+
+@keyframes export-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Success variant — green */
+.export-toast--success {
+  background-color: #f0fff4;
+  border-left-color: #38a169;
+  color: #276749;
+}
+
+/* Warning variant — amber */
+.export-toast--warning {
+  background-color: #fffbeb;
+  border-left-color: #d69e2e;
+  color: #744210;
+}
+
+/* Error variant — red */
+.export-toast--error {
+  background-color: #fff5f5;
+  border-left-color: #e53e3e;
+  color: #742a2a;
+}
+
+/* Toast message text */
+.export-toast__message {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* Toast action buttons container */
+.export-toast__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Retry button */
+.export-toast__retry {
+  background-color: transparent;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.12s ease;
+}
+
+.export-toast__retry:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.export-toast__retry:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Dismiss (×) button */
+.export-toast__dismiss {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.12s ease;
+}
+
+.export-toast__dismiss:hover {
+  opacity: 1;
+}
+
+.export-toast__dismiss:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
