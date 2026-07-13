@@ -1,18 +1,18 @@
 /**
  * ExportService — reusable export button group for any dashboard page.
  *
- * Renders an inline button group: [📥 Export] [▼ format selector].
+ * Renders an inline button group: [Export] [▼ format selector].
  * On trigger, calls `api.exportData()` with the current page and active
  * filters, handles the presigned-URL download on success, and displays
  * contextual notifications for timeout and error states.
  *
- * Requirements: 8.1, 8.2, 8.3, 8.4, 8.5
+ * Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { Download, Loader2, CheckCircle, AlertCircle, XCircle, X } from 'lucide-react';
 import { api, ApiTimeoutError } from '../services/api';
 import type { ActiveFilter, ExportRequest } from '../types/api';
-import './ExportService.css';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -51,19 +51,27 @@ interface ToastProps {
 }
 
 const Toast: React.FC<ToastProps> = ({ message, type, onDismiss, onRetry }) => {
+  const bgClass =
+    type === 'success' ? 'bg-emerald-600' :
+    type === 'warning' ? 'bg-amber-500' :
+    'bg-rose-600';
+
+  const Icon = type === 'success' ? CheckCircle : type === 'warning' ? AlertCircle : XCircle;
+
   return (
     <div
-      className={`export-toast export-toast--${type}`}
+      className={`flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg text-white text-xs font-medium ${bgClass}`}
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
     >
-      <span className="export-toast__message">{message}</span>
-      <div className="export-toast__actions">
+      <Icon className="w-4 h-4 flex-shrink-0" />
+      <span className="flex-1">{message}</span>
+      <div className="flex items-center gap-2 flex-shrink-0">
         {onRetry && (
           <button
             type="button"
-            className="export-toast__retry"
+            className="text-xs underline opacity-90 hover:opacity-100 whitespace-nowrap"
             onClick={onRetry}
           >
             Coba Lagi
@@ -71,11 +79,11 @@ const Toast: React.FC<ToastProps> = ({ message, type, onDismiss, onRetry }) => {
         )}
         <button
           type="button"
-          className="export-toast__dismiss"
+          className="flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity"
           aria-label="Tutup notifikasi"
           onClick={onDismiss}
         >
-          ✕
+          <X className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>
@@ -128,20 +136,20 @@ const ExportService: React.FC<ExportServiceProps> = ({
         // Trigger auto-download via presigned URL in a new tab.
         window.open(response.download_url, '_blank');
         setToast({
-          message: '✅ File siap diunduh!',
+          message: 'File siap diunduh',
           type: 'success',
         });
       } else if (response.status === 'timeout') {
         setToast({
           message:
-            '⚠️ Ekspor timeout (>30 detik). Coba kurangi rentang data atau coba lagi.',
+            'Ekspor timeout (>30 detik). Coba kurangi rentang data atau coba lagi',
           type: 'warning',
         });
       } else {
         // status === 'error' or unexpected status
         const cause = response.error_message ?? 'Terjadi kesalahan tidak terduga.';
         setToast({
-          message: `❌ Ekspor gagal: ${cause}. Coba lagi.`,
+          message: `Ekspor gagal: ${cause}. Coba lagi`,
           type: 'error',
         });
       }
@@ -149,14 +157,14 @@ const ExportService: React.FC<ExportServiceProps> = ({
       if (err instanceof ApiTimeoutError) {
         setToast({
           message:
-            '⚠️ Ekspor timeout (>30 detik). Coba kurangi rentang data atau coba lagi.',
+            'Ekspor timeout (>30 detik). Coba kurangi rentang data atau coba lagi',
           type: 'warning',
         });
       } else {
         const message =
           err instanceof Error ? err.message : 'Terjadi kesalahan tidak terduga.';
         setToast({
-          message: `❌ Ekspor gagal: ${message}. Coba lagi.`,
+          message: `Ekspor gagal: ${message}. Coba lagi`,
           type: 'error',
         });
       }
@@ -178,28 +186,34 @@ const ExportService: React.FC<ExportServiceProps> = ({
   const isButtonDisabled = disabled || exporting;
 
   return (
-    <div className="export-service">
-      {/* ── Button group ─────────────────────────────────────── */}
-      <div className="export-service__group" role="group" aria-label="Ekspor data">
-        {/* Export trigger button */}
+    <div className="flex items-center gap-2">
+      {/* Button group */}
+      <div className="flex items-center gap-2" role="group" aria-label="Ekspor data">
         <button
           type="button"
-          className="export-service__btn"
+          className={isButtonDisabled
+            ? (disabled
+              ? 'flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
+              : 'flex items-center gap-2 px-4 py-2 bg-[#005E6A]/70 text-white font-semibold rounded-lg text-xs cursor-not-allowed')
+            : 'flex items-center gap-2 px-4 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+          }
           onClick={() => void handleExport()}
           disabled={isButtonDisabled}
           aria-busy={exporting}
           aria-label={exporting ? 'Sedang mengekspor...' : `Ekspor sebagai ${format.toUpperCase()}`}
         >
-          {exporting ? '⏳ Mengekspor...' : '📥 Export'}
+          {exporting
+            ? <><Loader2 className="w-4 h-4 animate-spin" /><span>Mengekspor</span></>
+            : <><Download className="w-4 h-4" /><span>Export</span></>
+          }
         </button>
 
-        {/* Format selector */}
-        <label htmlFor="export-format-select" className="export-service__sr-only">
+        <label htmlFor="export-format-select" className="sr-only">
           Format ekspor
         </label>
         <select
           id="export-format-select"
-          className="export-service__select"
+          className="px-3 py-2 border border-gray-300 rounded-lg text-xs bg-white focus:ring-2 focus:ring-[#005E6A] focus:outline-none"
           value={format}
           onChange={(e) => setFormat(e.target.value as ExportFormat)}
           disabled={isButtonDisabled}
@@ -211,14 +225,16 @@ const ExportService: React.FC<ExportServiceProps> = ({
         </select>
       </div>
 
-      {/* ── Toast notification ───────────────────────────────── */}
+      {/* Toast notification — positioned fixed */}
       {toast !== null && (
-        <Toast
-          message={toast.message}
-          type={toast.type}
-          onDismiss={handleDismiss}
-          onRetry={toast.type !== 'success' ? handleRetry : undefined}
-        />
+        <div className="fixed bottom-5 right-5 max-w-sm space-y-2 z-50">
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onDismiss={handleDismiss}
+            onRetry={toast.type !== 'success' ? handleRetry : undefined}
+          />
+        </div>
       )}
     </div>
   );

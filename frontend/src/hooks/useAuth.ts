@@ -73,18 +73,31 @@ function isSessionExpired(claims: Record<string, unknown>): boolean {
   return nowSeconds - authTime > SESSION_DURATION_SECONDS;
 }
 
+// ── Local dev bypass ──────────────────────────────────────────────────────
+
+/** True when running against the local FastAPI dev server (no Cognito). */
+const IS_LOCAL_DEV =
+  (process.env['REACT_APP_API_GATEWAY_URL'] ?? '').includes('localhost');
+
 // ── Hook ───────────────────────────────────────────────────────────────────
 
 /**
  * Hook that surfaces authentication state and enforces session expiry.
  *
+ * In local-dev mode (REACT_APP_API_GATEWAY_URL points to localhost) the hook
+ * immediately returns a mock authenticated user so Cognito is never called.
+ *
  * @returns {AuthState} Current auth state plus a sign-out function.
  */
 export function useAuth(): AuthState {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [role, setRole] = useState<UserRole>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<AuthUser | null>(
+    IS_LOCAL_DEV ? { username: 'local-dev', userId: 'local-dev' } : null,
+  );
+  const [role, setRole] = useState<UserRole>(
+    IS_LOCAL_DEV ? 'divisi_bisnis' : null,
+  );
+  const [isAuthenticated, setIsAuthenticated] = useState(IS_LOCAL_DEV);
+  const [isLoading, setIsLoading] = useState(!IS_LOCAL_DEV);
 
   // ── Sign-out ─────────────────────────────────────────────────────────────
 
@@ -101,6 +114,9 @@ export function useAuth(): AuthState {
   // ── Load / refresh auth state ─────────────────────────────────────────────
 
   const loadAuthState = useCallback(async (): Promise<void> => {
+    // In local dev mode auth is already set via useState defaults — skip Cognito.
+    if (IS_LOCAL_DEV) return;
+
     try {
       // getCurrentUser throws if there is no active session.
       const currentUser = await getCurrentUser();

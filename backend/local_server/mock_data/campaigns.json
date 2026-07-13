@@ -1,0 +1,52 @@
+[
+  {
+    "campaign_id": "C001",
+    "nama_program": "Cashback QRIS Agustus 2024",
+    "flag_program": "PROGRAM QRIS",
+    "jenis_leads": "Akuisisi",
+    "media_blasting": "wa",
+    "periode_start": "2024-08-01",
+    "periode_end": "2024-08-31",
+    "duration_days": 30
+  },
+  {
+    "campaign_id": "C002",
+    "nama_program": "Migrasi Biaya Admin Q3 2024",
+    "flag_program": "PROGRAM BIAYA ADMIN",
+    "jenis_leads": "Migrasi",
+    "media_blasting": "telesales",
+    "periode_start": "2024-07-01",
+    "periode_end": "2024-09-30",
+    "duration_days": 91
+  },
+  {
+    "campaign_id": "C003",
+    "nama_program": "Digisales QRIS Nasabah Mass",
+    "flag_program": "PROGRAM QRIS",
+    "jenis_leads": "Akuisisi",
+    "media_blasting": "digisales",
+    "periode_start": "2024-09-01",
+    "periode_end": "2024-09-30",
+    "duration_days": 29
+  },
+  {
+    "campaign_id": "C004",
+    "nama_program": "WA Blast Biaya Admin Emerald",
+    "flag_program": "PROGRAM BIAYA ADMIN",
+    "jenis_leads": "Migrasi",
+    "media_blasting": "wa",
+    "periode_start": "2024-10-01",
+    "periode_end": "2024-10-31",
+    "duration_days": 30
+  },
+  {
+    "campaign_id": "C005",
+    "nama_program": "Email QRIS Nasabah Affluent",
+    "flag_program": "PROGRAM QRIS",
+    "jenis_leads": "Retensi",
+    "media_blasting": "email",
+    "periode_start": "2024-11-01",
+    "periode_end": "2024-11-30",
+    "duration_days": 29
+  }
+]

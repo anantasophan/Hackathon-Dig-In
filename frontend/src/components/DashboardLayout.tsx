@@ -1,24 +1,36 @@
 /**
  * DashboardLayout — main application shell.
  *
- * Renders a three-region layout:
- *   Header  — app title, username, logout button
- *   Sidebar — navigation links to all six pages
- *   Content — renders `children` in the main area
+ * Renders a two-column layout (sidebar-left, content-right):
+ *   Sidebar  — logo header, user session info, nav links, logout button
+ *   Content  — top header bar + children in scrollable view container
  *
- * Requirements: 1.1
+ * Styling: Tailwind CSS utility classes only (no DashboardLayout.css).
+ * Icons:   Lucide React — LayoutGrid, GitCompareArrows, Clock, MapPin,
+ *          Users, Search, LogOut.
+ *
+ * Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12
  */
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './DashboardLayout.css';
+import {
+  LayoutGrid,
+  GitCompareArrows,
+  Clock,
+  MapPin,
+  Users,
+  Search,
+  LogOut,
+  Sparkles,
+} from 'lucide-react';
 
 // ── Types ────────────────────────────────────────────────────────
 
 interface NavItem {
   path: string;
   label: string;
-  icon: string;
+  Icon: React.ComponentType<{ className?: string }>;
 }
 
 export interface DashboardLayoutProps {
@@ -30,12 +42,13 @@ export interface DashboardLayoutProps {
 // ── Navigation items ─────────────────────────────────────────────
 
 const navItems: NavItem[] = [
-  { path: '/overview', label: 'Campaign Overview', icon: '📊' },
-  { path: '/comparison', label: 'Perbandingan Campaign', icon: '⚖️' },
-  { path: '/time-analysis', label: 'Time to Take Up', icon: '⏱️' },
-  { path: '/regional', label: 'Performa Regional', icon: '🗺️' },
-  { path: '/customer-criteria', label: 'Kriteria Nasabah', icon: '👥' },
-  { path: '/similar-campaigns', label: 'Campaign Serupa', icon: '🔍' },
+  { path: '/overview', label: 'Campaign Overview', Icon: LayoutGrid },
+  { path: '/comparison', label: 'Perbandingan Campaign', Icon: GitCompareArrows },
+  { path: '/time-analysis', label: 'Time to Take Up', Icon: Clock },
+  { path: '/regional', label: 'Performa Regional', Icon: MapPin },
+  { path: '/customer-criteria', label: 'Kriteria Nasabah', Icon: Users },
+  { path: '/similar-campaigns', label: 'Campaign Serupa', Icon: Search },
+  { path: '/ai-recommendations', label: 'AI Recommendations', Icon: Sparkles },
 ];
 
 // ── Component ────────────────────────────────────────────────────
@@ -46,58 +59,79 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   onSignOut,
 }) => {
   return (
-    <div className="dashboard-root">
-      {/* ── Header ────────────────────────────────────────────── */}
-      <header className="dashboard-header">
-        <span className="dashboard-header__title">
-          Campaign Insight Generator
-        </span>
+    <div className="h-screen flex bg-gray-50 overflow-hidden">
 
-        <div className="dashboard-header__right">
-          {username && (
-            <span className="dashboard-header__username">{username}</span>
-          )}
-          {onSignOut && (
-            <button
-              className="dashboard-header__logout"
-              onClick={onSignOut}
-              type="button"
-            >
-              Logout
-            </button>
-          )}
+      {/* ── Sidebar ─────────────────────────────────────────────── */}
+      <aside className="w-64 flex-shrink-0 bg-slate-900 flex flex-col">
+
+        {/* Logo header */}
+        <div className="bg-slate-950 px-5 py-4 border-b border-slate-800">
+          <span className="text-sm font-bold text-white">
+            Campaign Insight Generator
+          </span>
+          <div className="text-[10px] text-[#F15A24] font-semibold uppercase tracking-wider">
+            BNI
+          </div>
         </div>
-      </header>
 
-      {/* ── Body ──────────────────────────────────────────────── */}
-      <div className="dashboard-body">
-        {/* ── Sidebar ─────────────────────────────────────────── */}
-        <nav className="dashboard-sidebar" aria-label="Main navigation">
-          <ul className="dashboard-sidebar__nav" role="list">
-            {navItems.map(({ path, label, icon }) => (
-              <li key={path} className="dashboard-sidebar__item">
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
+        {/* User session info */}
+        {username && (
+          <div className="bg-slate-800/50 px-4 py-2.5">
+            <span className="text-xs text-slate-400">Pengguna</span>
+            <div className="text-xs font-medium text-slate-300">{username}</div>
+          </div>
+        )}
+
+        {/* Nav */}
+        <nav className="flex-1 p-4 space-y-1" aria-label="Main navigation">
+          {navItems.map(({ path, label, Icon }) => (
+            <NavLink key={path} to={path}>
+              {({ isActive }) => (
+                <span
+                  className={
                     isActive
-                      ? 'dashboard-sidebar__link active'
-                      : 'dashboard-sidebar__link'
+                      ? 'w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-xs font-semibold bg-[#005E6A] text-white'
+                      : 'w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-xs font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition-colors'
                   }
-                  aria-current={undefined}
                 >
-                  <span className="dashboard-sidebar__icon" aria-hidden="true">
-                    {icon}
-                  </span>
-                  <span className="dashboard-sidebar__label">{label}</span>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+                  <Icon className="w-4 h-4 flex-shrink-0" />
+                  <span>{label}</span>
+                </span>
+              )}
+            </NavLink>
+          ))}
         </nav>
 
-        {/* ── Content ─────────────────────────────────────────── */}
-        <main className="dashboard-content">{children}</main>
-      </div>
+        {/* Logout */}
+        {onSignOut && (
+          <div className="bg-slate-950 p-4 border-t border-slate-800">
+            <button
+              onClick={onSignOut}
+              type="button"
+              className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-xs font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+            >
+              <LogOut className="w-4 h-4 flex-shrink-0" />
+              <span>Logout</span>
+            </button>
+          </div>
+        )}
+      </aside>
+
+      {/* ── Content area ────────────────────────────────────────── */}
+      <main className="flex-1 flex flex-col bg-slate-50 overflow-hidden">
+
+        {/* Top Header Bar */}
+        <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0 shadow-sm z-30">
+          <h1 className="text-md font-bold text-gray-700">
+            Campaign Insight Generator
+          </h1>
+        </header>
+
+        {/* View container */}
+        <div className="flex-1 overflow-y-auto p-6">
+          {children}
+        </div>
+      </main>
     </div>
   );
 };

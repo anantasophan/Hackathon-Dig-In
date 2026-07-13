@@ -1,0 +1,12 @@
+{
+  "name": "campaign-insight-generator-workspace",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd backend && uvicorn local_server.main:app --reload --port 8000",
+    "dev:frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

@@ -13,6 +13,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import { Loader2 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
 /**
@@ -31,24 +32,9 @@ const LoginPage: React.FC = () => {
       <div
         role="status"
         aria-label="Loading"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh',
-        }}
+        className="flex justify-center items-center min-h-screen"
       >
-        <div
-          style={{
-            width: 40,
-            height: 40,
-            border: '4px solid #e0e0e0',
-            borderTopColor: '#1976d2',
-            borderRadius: '50%',
-            animation: 'spin 0.8s linear infinite',
-          }}
-        />
-        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        <Loader2 className="w-10 h-10 animate-spin text-[#005E6A]" />
       </div>
     );
   }
@@ -59,26 +45,8 @@ const LoginPage: React.FC = () => {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        backgroundColor: '#f5f5f5',
-        padding: '2rem',
-      }}
-    >
-      <h1
-        style={{
-          marginBottom: '2rem',
-          fontSize: '1.75rem',
-          fontWeight: 700,
-          color: '#1a1a2e',
-          textAlign: 'center',
-        }}
-      >
+    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 p-8">
+      <h1 className="mb-8 text-2xl font-bold text-slate-800 text-center">
         Campaign Insight Generator
       </h1>
 

@@ -6,12 +6,12 @@
  * FilterState to the parent via the `onFilterChange` callback when the user
  * presses Apply or Reset.
  *
- * Requirements: 1.3, 1.4, 1.5
+ * Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8
  */
 
 import React, { useState, useCallback } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { FilterState, FilterChangeHandler } from '../types/filters';
-import './FilterPanel.css';
 
 // ── Constants ────────────────────────────────────────────────────
 
@@ -101,18 +101,20 @@ function CheckboxGroup<T extends string | number>({
   onChange,
 }: CheckboxGroupProps<T>): React.ReactElement {
   return (
-    <fieldset className="filter-panel__fieldset">
-      <legend className="filter-panel__legend">{legend}</legend>
-      <div className="filter-panel__checkbox-grid">
+    <fieldset className="space-y-2">
+      <legend className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
+        {legend}
+      </legend>
+      <div className="grid grid-cols-2 gap-1.5">
         {options.map((opt) => {
           const id = getId(opt);
           const checked = (selected as (string | number)[]).includes(opt);
           return (
-            <label key={id} htmlFor={id} className="filter-panel__checkbox-label">
+            <label key={id} htmlFor={id} className="flex items-center gap-2 text-xs text-gray-700 cursor-pointer">
               <input
                 type="checkbox"
                 id={id}
-                className="filter-panel__checkbox"
+                className="rounded border-gray-300 text-[#005E6A] focus:ring-[#005E6A]"
                 checked={checked}
                 onChange={(e) => onChange(opt, e.target.checked)}
               />
@@ -214,55 +216,59 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
   // ── Render ───────────────────────────────────────────────────
 
   return (
-    <aside className="filter-panel" aria-label="Filter Panel">
+    <aside className="bg-white border border-gray-200 rounded-xl shadow-sm" aria-label="Filter Panel">
       {/* ── Header ─────────────────────────────────────────── */}
-      <div className="filter-panel__header">
-        <span className="filter-panel__title">Filter</span>
+      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+        <span className="text-xs font-bold uppercase tracking-wider text-gray-600">Filter</span>
         <button
           type="button"
-          className="filter-panel__toggle"
+          className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700"
           aria-expanded={!isCollapsed}
           aria-controls="filter-panel-body"
           onClick={() => setIsCollapsed((c) => !c)}
         >
-          {isCollapsed ? '▼ Expand' : '▲ Collapse'}
+          {isCollapsed ? (
+            <><ChevronDown className="w-4 h-4" /><span>Expand</span></>
+          ) : (
+            <><ChevronUp className="w-4 h-4" /><span>Collapse</span></>
+          )}
         </button>
       </div>
 
       {/* ── Body ───────────────────────────────────────────── */}
       {!isCollapsed && (
-        <div id="filter-panel-body" className="filter-panel__body">
+        <div id="filter-panel-body" className="p-4 space-y-4">
 
           {/* Period */}
-          <fieldset className="filter-panel__fieldset">
-            <legend className="filter-panel__legend">Periode</legend>
-            <div className="filter-panel__date-row">
+          <fieldset className="space-y-2">
+            <legend className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Periode</legend>
+            <div className="flex flex-col gap-1">
               <label
                 htmlFor="filter-start-date"
-                className="filter-panel__date-label"
+                className="text-xs text-gray-600 font-medium"
               >
                 Dari
               </label>
               <input
                 type="date"
                 id="filter-start-date"
-                className="filter-panel__date-input"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
                 value={filters.dateRange.startDate}
                 max={filters.dateRange.endDate}
                 onChange={(e) => handleDateChange('startDate', e.target.value)}
               />
             </div>
-            <div className="filter-panel__date-row">
+            <div className="flex flex-col gap-1">
               <label
                 htmlFor="filter-end-date"
-                className="filter-panel__date-label"
+                className="text-xs text-gray-600 font-medium"
               >
                 Sampai
               </label>
               <input
                 type="date"
                 id="filter-end-date"
-                className="filter-panel__date-input"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
                 value={filters.dateRange.endDate}
                 min={filters.dateRange.startDate}
                 onChange={(e) => handleDateChange('endDate', e.target.value)}
@@ -281,18 +287,18 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
           />
 
           {/* Jenis Leads */}
-          <fieldset className="filter-panel__fieldset">
-            <legend className="filter-panel__legend">Jenis Leads (Sub-Produk)</legend>
+          <fieldset className="space-y-2">
+            <legend className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Jenis Leads (Sub-Produk)</legend>
             <label
               htmlFor="filter-jenis-leads"
-              className="filter-panel__text-label"
+              className="text-xs text-gray-600 font-medium"
             >
               Masukkan nilai, pisahkan dengan koma
             </label>
             <input
               type="text"
               id="filter-jenis-leads"
-              className="filter-panel__text-input"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
               placeholder="Contoh: Migrasi, Baru, Reaktivasi"
               value={jenisCleadsText}
               onChange={(e) => handleJenisCleadsChange(e.target.value)}
@@ -320,17 +326,17 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
           />
 
           {/* Action buttons */}
-          <div className="filter-panel__actions">
+          <div className="flex gap-2 pt-2">
             <button
               type="button"
-              className="filter-panel__btn filter-panel__btn--reset"
+              className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg text-xs transition-colors"
               onClick={handleReset}
             >
               Reset
             </button>
             <button
               type="button"
-              className="filter-panel__btn filter-panel__btn--apply"
+              className="flex-1 px-4 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors"
               onClick={handleApply}
             >
               Apply

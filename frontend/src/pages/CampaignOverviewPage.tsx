@@ -2,10 +2,10 @@
  * CampaignOverviewPage — Campaign Overview dashboard page.
  *
  * Displays aggregate metrics (total leads, total take-up, take-up rate),
- * a time-series trend line chart, and a filter panel.  Integrates with
+ * a time-series trend line chart, and a filter panel. Integrates with
  * the FilterPanel component and refreshes data on every filter change.
  *
- * Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7
+ * Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 5.10, 5.11
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -21,13 +21,20 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import {
+  Users,
+  TrendingUp,
+  BarChart2,
+  CheckCircle,
+  AlertCircle,
+} from 'lucide-react';
 import DashboardLayout from '../components/DashboardLayout';
 import FilterPanel from '../components/FilterPanel';
+import { EmptyState, LoadingState, ErrorState } from '../components/StateComponents';
 import { api, ApiTimeoutError } from '../services/api';
 import { FilterState } from '../types/filters';
 import type { CampaignOverviewResponse, CampaignOverviewRequest, TrendDataPoint } from '../types/api';
 import { useAuth } from '../hooks/useAuth';
-import './CampaignOverviewPage.css';
 
 // ── Chart.js registration ────────────────────────────────────────────────
 
@@ -71,26 +78,25 @@ function formatRate(n: number): string {
 
 // ── Sub-components ────────────────────────────────────────────────────────
 
-interface MetricCardProps {
+interface StatCardProps {
   label: string;
   value: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ label, value, icon }) => (
-  <div className="overview-metric-card" role="region" aria-label={label}>
-    <div className="overview-metric-card__icon" aria-hidden="true">
+const StatCard: React.FC<StatCardProps> = ({ label, value, icon }) => (
+  <div
+    className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm flex items-start gap-3"
+    role="region"
+    aria-label={label}
+  >
+    <div className="flex-shrink-0 text-[#005E6A]" aria-hidden="true">
       {icon}
     </div>
-    <div className="overview-metric-card__label">{label}</div>
-    <div className="overview-metric-card__value">{value}</div>
-  </div>
-);
-
-const LoadingSpinner: React.FC = () => (
-  <div className="overview-state overview-state--loading" aria-busy="true" aria-label="Memuat data">
-    <div className="overview-spinner" role="status" />
-    <p className="overview-state__text">Memuat data…</p>
+    <div>
+      <span className="text-xs font-medium text-slate-400 block">{label}</span>
+      <span className="text-2xl font-bold text-slate-700">{value}</span>
+    </div>
   </div>
 );
 
@@ -239,67 +245,63 @@ const CampaignOverviewPage: React.FC = () => {
 
   return (
     <DashboardLayout username={user?.username} onSignOut={signOut}>
-      <div className="overview-page">
+      <div className="flex flex-col gap-4">
         {/* ── Page header ────────────────────────────────────────────── */}
-        <div className="overview-page__header">
-          <h1 className="overview-page__title">Campaign Overview</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-md font-bold text-gray-700">Campaign Overview</h1>
           {responseMs !== null && (
             <span
               className={
                 responseMs < 5000
-                  ? 'overview-response-badge overview-response-badge--good'
-                  : 'overview-response-badge overview-response-badge--slow'
+                  ? 'inline-flex items-center gap-1 text-xs font-medium text-emerald-600'
+                  : 'inline-flex items-center gap-1 text-xs font-medium text-amber-600'
               }
               aria-live="polite"
               title={`Response time: ${(responseMs / 1000).toFixed(2)}s`}
             >
-              {responseMs < 5000
-                ? `✓ <5s`
-                : `⚠ ${(responseMs / 1000).toFixed(1)}s`}
+              {responseMs < 5000 ? (
+                <>
+                  <CheckCircle className="w-3.5 h-3.5" aria-hidden="true" />
+                  Respons cepat
+                </>
+              ) : (
+                <>
+                  <AlertCircle className="w-3.5 h-3.5" aria-hidden="true" />
+                  {`${(responseMs / 1000).toFixed(1)}s`}
+                </>
+              )}
             </span>
           )}
         </div>
 
         {/* ── Body: filter sidebar + main content ────────────────────── */}
-        <div className="overview-page__content">
+        <div className="flex gap-4">
           {/* Filter sidebar */}
-          <aside className="overview-page__filter">
+          <aside className="w-72 flex-shrink-0">
             <FilterPanel onFilterChange={fetchOverview} />
           </aside>
 
           {/* Main content */}
           <section
-            className="overview-page__main"
+            className="flex-1 min-w-0 space-y-4"
             aria-label="Overview metrics and chart"
           >
             {/* ── Loading state ───────────────────────────────────── */}
-            {loading && <LoadingSpinner />}
+            {loading && (
+              <LoadingState />
+            )}
 
             {/* ── Error state ─────────────────────────────────────── */}
             {!loading && error && (
-              <div className="overview-state overview-state--error" role="alert">
-                <span className="overview-state__icon" aria-hidden="true">
-                  ⚠️
-                </span>
-                <p className="overview-state__message">{error}</p>
-                <p className="overview-state__hint">
-                  Silakan coba lagi atau ubah filter.
-                </p>
-              </div>
+              <ErrorState message={error} />
             )}
 
             {/* ── Empty state ─────────────────────────────────────── */}
             {isEmpty && (
-              <div className="overview-state overview-state--empty" role="status">
-                <span className="overview-state__icon" aria-hidden="true">
-                  📭
-                </span>
-                <p className="overview-state__title">Tidak ada data yang cocok</p>
-                <p className="overview-state__hint">
-                  {emptyMessage ??
-                    'Tidak ada kampanye yang sesuai dengan filter yang dipilih. Coba ubah rentang tanggal atau filter lainnya.'}
-                </p>
-              </div>
+              <EmptyState
+                message="Tidak ada data yang cocok"
+                hint={emptyMessage ?? 'Tidak ada kampanye yang sesuai dengan filter yang dipilih. Coba ubah rentang tanggal atau filter lainnya.'}
+              />
             )}
 
             {/* ── Data state ──────────────────────────────────────── */}
@@ -307,41 +309,44 @@ const CampaignOverviewPage: React.FC = () => {
               <>
                 {/* Metric cards — 3 cards side by side */}
                 <div
-                  className="overview-metrics"
+                  className="grid grid-cols-3 gap-4"
                   role="list"
                   aria-label="Metrik ringkasan"
                 >
-                  <MetricCard
+                  <StatCard
                     label="Total Leads"
                     value={formatNumber(data.total_leads)}
-                    icon="👥"
+                    icon={<Users className="w-5 h-5" />}
                   />
-                  <MetricCard
+                  <StatCard
                     label="Total Take Up"
                     value={formatNumber(data.total_take_up)}
-                    icon="✅"
+                    icon={<TrendingUp className="w-5 h-5" />}
                   />
-                  <MetricCard
+                  <StatCard
                     label="Take Up Rate"
                     value={formatRate(data.take_up_rate)}
-                    icon="📈"
+                    icon={<BarChart2 className="w-5 h-5" />}
                   />
                 </div>
 
                 {/* Trend line chart */}
                 {data.trend.length > 0 ? (
                   <div
-                    className="overview-chart"
+                    className="bg-white border border-gray-200 rounded-xl shadow-sm p-4"
                     aria-label="Grafik tren take-up rate"
                   >
-                    <Line
-                      data={buildChartData(data.trend)}
-                      options={chartOptions}
-                    />
+                    {/* Inline style is the sole permitted exception — Chart.js requires explicit height */}
+                    <div style={{ height: '320px' }}>
+                      <Line
+                        data={buildChartData(data.trend)}
+                        options={chartOptions}
+                      />
+                    </div>
                   </div>
                 ) : (
-                  <div className="overview-chart-empty">
-                    <p className="overview-state__hint">
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+                    <p className="text-xs text-gray-500">
                       Tidak ada data tren untuk periode yang dipilih.
                     </p>
                   </div>
@@ -350,14 +355,15 @@ const CampaignOverviewPage: React.FC = () => {
                 {/* Active filters summary */}
                 {data.filters.length > 0 && (
                   <div
-                    className="overview-filter-summary"
+                    className="flex flex-wrap items-center gap-2 text-xs text-gray-500"
                     aria-label="Filter aktif"
                   >
-                    <span className="overview-filter-summary__label">
-                      Filter aktif:{' '}
-                    </span>
+                    <span className="font-medium">Filter aktif:</span>
                     {data.filters.map((f) => (
-                      <span key={f.field} className="overview-filter-tag">
+                      <span
+                        key={f.field}
+                        className="bg-[#005E6A]/10 border border-[#005E6A]/30 text-[#005E6A] rounded px-2 py-0.5 text-xs font-medium"
+                      >
                         {f.field}: {f.values.join(', ')}
                       </span>
                     ))}

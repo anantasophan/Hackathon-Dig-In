@@ -5,7 +5,7 @@
  * with a per-region 8-week trend line chart shown when the user selects
  * a row.  Supports Campaign ID input and flag_program product filter.
  *
- * Requirements: 4.1, 4.2, 4.3, 4.4, 4.5
+ * Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 8.10, 8.11, 8.12, 8.13
  */
 
 import React, { useState, useCallback } from 'react';
@@ -20,7 +20,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { MapPin } from 'lucide-react';
 import DashboardLayout from '../components/DashboardLayout';
+import { EmptyState, LoadingState, ErrorState } from '../components/StateComponents';
 import { api } from '../services/api';
 import type {
   RegionalPerformanceResponse,
@@ -28,7 +30,6 @@ import type {
   RegionalTrendPoint,
 } from '../types/api';
 import { useAuth } from '../hooks/useAuth';
-import './RegionalPerformancePage.css';
 
 // ── Chart.js registration ─────────────────────────────────────────────────
 
@@ -49,6 +50,20 @@ const FLAG_PROGRAM_OPTIONS: { value: string; label: string }[] = [
   { value: 'PROGRAM QRIS', label: 'PROGRAM QRIS' },
   { value: 'PROGRAM BIAYA ADMIN', label: 'PROGRAM BIAYA ADMIN' },
 ];
+
+// ── Badge helper ──────────────────────────────────────────────────────────
+
+/**
+ * Returns a full Tailwind class string for the take-up rate badge.
+ * Exported so it can be unit/property tested.
+ *
+ * @param rate - take-up rate percentage (e.g. 12.5 means 12.5%)
+ */
+export function getTakeUpBadgeClasses(rate: number): string {
+  if (rate >= 10) return 'bg-emerald-100 text-emerald-700 rounded px-1.5 py-0.5 text-xs font-semibold';
+  if (rate >= 5)  return 'bg-amber-100 text-amber-700 rounded px-1.5 py-0.5 text-xs font-semibold';
+  return 'bg-rose-100 text-rose-700 rounded px-1.5 py-0.5 text-xs font-semibold';
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 
@@ -90,10 +105,10 @@ function buildTrendChartData(
       {
         label: `Take-Up Rate — ${regionName}`,
         data: regionPoints.map((p) => p.take_up_rate),
-        borderColor: '#3182ce',
-        backgroundColor: 'rgba(49, 130, 206, 0.1)',
+        borderColor: '#005E6A',
+        backgroundColor: 'rgba(0, 94, 106, 0.1)',
         borderWidth: 2,
-        pointBackgroundColor: '#3182ce',
+        pointBackgroundColor: '#005E6A',
         pointRadius: 4,
         tension: 0.3,
         fill: true,
@@ -112,7 +127,7 @@ function buildTrendChartOptions(regionName: string) {
         display: true,
         text: `Tren 8 Minggu — Wilayah ${regionName}`,
         font: { size: 14 },
-        color: '#1a365d',
+        color: '#1e293b',
       },
       tooltip: {
         callbacks: {
@@ -126,17 +141,17 @@ function buildTrendChartOptions(regionName: string) {
         ticks: {
           maxTicksLimit: 8,
           maxRotation: 45,
-          color: '#4a5568',
+          color: '#475569',
         },
-        grid: { color: '#edf2f7' },
+        grid: { color: '#f1f5f9' },
       },
       y: {
         beginAtZero: true,
         ticks: {
           callback: (value: string | number) => `${value}%`,
-          color: '#4a5568',
+          color: '#475569',
         },
-        grid: { color: '#edf2f7' },
+        grid: { color: '#f1f5f9' },
       },
     },
   };
@@ -217,25 +232,27 @@ const RegionalPerformancePage: React.FC = () => {
 
   return (
     <DashboardLayout username={user?.username} onSignOut={signOut}>
-      {/* Spinner animation is declared in RegionalPerformancePage.css */}
-
-      <div style={styles.pageRoot}>
-        {/* ── Page heading ─────────────────────────────────────────── */}
-        <h1 style={styles.pageTitle}>Performa Regional</h1>
+      <div className="flex flex-col gap-4">
 
         {/* ── Filter card ──────────────────────────────────────────── */}
-        <div style={styles.card}>
-          <h2 style={styles.sectionTitle}>Filter</h2>
-          <div style={styles.filterRow}>
+        <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+            Filter
+          </h2>
+          <div className="flex gap-4 flex-wrap items-end">
+
             {/* Campaign ID input */}
-            <div style={styles.filterGroup}>
-              <label htmlFor="campaign-id-input" style={styles.label}>
+            <div className="flex flex-col gap-1">
+              <label
+                htmlFor="campaign-id-input"
+                className="text-xs font-bold uppercase tracking-wider text-gray-600"
+              >
                 Campaign ID
               </label>
               <input
                 id="campaign-id-input"
                 type="text"
-                style={styles.input}
+                className="w-60 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
                 placeholder="Masukkan Campaign ID"
                 value={campaignId}
                 onChange={(e) => {
@@ -248,20 +265,23 @@ const RegionalPerformancePage: React.FC = () => {
               />
               <span
                 id="regional-input-hint"
-                style={styles.hintText}
+                className="text-xs text-gray-400"
               >
                 Tekan Enter atau klik Cari
               </span>
             </div>
 
             {/* Flag program filter */}
-            <div style={styles.filterGroup}>
-              <label htmlFor="flag-program-select" style={styles.label}>
+            <div className="flex flex-col gap-1">
+              <label
+                htmlFor="flag-program-select"
+                className="text-xs font-bold uppercase tracking-wider text-gray-600"
+              >
                 Program
               </label>
               <select
                 id="flag-program-select"
-                style={styles.select}
+                className="px-3 py-2 border border-gray-300 rounded-lg text-xs bg-white focus:ring-2 focus:ring-[#005E6A] focus:outline-none min-w-[200px]"
                 value={flagProgram}
                 onChange={(e) => setFlagProgram(e.target.value)}
                 disabled={loading}
@@ -275,17 +295,20 @@ const RegionalPerformancePage: React.FC = () => {
             </div>
 
             {/* Fetch button */}
-            <div style={styles.filterGroup}>
-              {/* Invisible label to align button with inputs */}
-              <span style={{ ...styles.label, visibility: 'hidden' }}>
+            <div className="flex flex-col gap-1">
+              {/* Invisible label to vertically align button with inputs */}
+              <span
+                className="text-xs font-bold uppercase tracking-wider text-gray-600 invisible"
+                aria-hidden="true"
+              >
                 &nbsp;
               </span>
               <button
                 type="button"
-                style={
+                className={
                   canFetch && !loading
-                    ? styles.primaryButton
-                    : styles.primaryButtonDisabled
+                    ? 'px-5 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+                    : 'px-5 py-2 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
                 }
                 onClick={handleFetch}
                 disabled={!canFetch || loading}
@@ -299,27 +322,23 @@ const RegionalPerformancePage: React.FC = () => {
 
         {/* ── Loading state ─────────────────────────────────────────── */}
         {loading && (
-          <div style={styles.centerState} role="status" aria-label="Memuat data">
-            <div style={styles.spinner} aria-hidden="true" />
-            <p style={styles.statusText}>Memuat data regional…</p>
-          </div>
+          <LoadingState />
         )}
 
         {/* ── Error state ───────────────────────────────────────────── */}
         {!loading && error !== null && (
-          <div style={styles.errorState} role="alert">
-            <span style={styles.stateIcon} aria-hidden="true">⚠️</span>
-            <p style={styles.errorText}>{error}</p>
-            <p style={styles.statusText}>Periksa Campaign ID dan coba lagi.</p>
-          </div>
+          <ErrorState message={`${error} Periksa Campaign ID dan coba lagi.`} />
         )}
 
         {/* ── Idle / no-search state ────────────────────────────────── */}
         {!loading && error === null && data === null && (
-          <div style={styles.centerState} role="status">
-            <span style={styles.stateIcon} aria-hidden="true">🗺️</span>
-            <p style={styles.idleTitle}>Belum ada data ditampilkan</p>
-            <p style={styles.statusText}>
+          <div
+            className="text-center py-12 text-gray-400"
+            role="status"
+          >
+            <MapPin className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+            <p className="text-sm font-medium">Belum ada data ditampilkan</p>
+            <p className="text-xs mt-1">
               Masukkan Campaign ID di atas dan tekan <strong>Cari</strong> untuk
               melihat performa regional.
             </p>
@@ -328,64 +347,60 @@ const RegionalPerformancePage: React.FC = () => {
 
         {/* ── Empty regional data ───────────────────────────────────── */}
         {!loading && error === null && data !== null && data.regions.length === 0 && (
-          <div style={styles.centerState} role="status">
-            <span style={styles.stateIcon} aria-hidden="true">📭</span>
-            <p style={styles.idleTitle}>Tidak ada data regional</p>
-            <p style={styles.statusText}>
-              Tidak ada data wilayah yang tersedia untuk campaign{' '}
-              <strong>{data.campaign_name || data.campaign_id}</strong>
-              {flagProgram ? ` dengan program ${flagProgram}` : ''}.
-              Coba ubah filter program atau pilih campaign lain.
-            </p>
-          </div>
+          <EmptyState
+            message="Tidak ada data tersedia"
+            hint={`Tidak ada data wilayah yang tersedia untuk campaign ${data.campaign_name || data.campaign_id}${flagProgram ? ` dengan program ${flagProgram}` : ''}. Coba ubah filter program atau pilih campaign lain.`}
+          />
         )}
 
         {/* ── Results ───────────────────────────────────────────────── */}
         {!loading && error === null && data !== null && data.regions.length > 0 && (
           <>
             {/* Campaign name banner */}
-            <div style={styles.campaignBanner}>
-              <span style={styles.campaignBannerLabel}>Campaign:</span>
-              <span style={styles.campaignBannerValue}>
+            <div className="flex items-center gap-2.5 px-4 py-2.5 bg-[#005E6A]/10 border border-[#005E6A]/30 rounded-lg flex-wrap">
+              <span className="text-xs font-semibold text-[#005E6A]">Campaign:</span>
+              <span className="text-xs font-bold text-slate-700">
                 {data.campaign_name || data.campaign_id}
               </span>
               {data.flag_program && (
-                <span style={styles.programTag}>{data.flag_program}</span>
+                <span className="bg-emerald-100 text-emerald-700 border border-emerald-200 rounded px-2 py-0.5 text-xs font-semibold">
+                  {data.flag_program}
+                </span>
               )}
             </div>
 
             {/* Region performance table */}
-            <div style={styles.card}>
-              <h2 style={styles.sectionTitle}>
+            <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
                 Performa per Wilayah{' '}
-                <span style={styles.subtleNote}>
+                <span className="text-gray-300 font-normal normal-case tracking-normal">
                   — klik baris untuk melihat tren 8 minggu
                 </span>
               </h2>
-              <div style={{ overflowX: 'auto' }}>
+              <div className="overflow-x-auto">
                 <table
-                  style={styles.table}
+                  className="w-full text-xs"
                   aria-label="Tabel performa regional"
                   aria-describedby="region-table-desc"
                 >
-                  <caption id="region-table-desc" style={styles.visuallyHidden}>
+                  <caption id="region-table-desc" className="sr-only">
                     Tabel wilayah diurutkan berdasarkan Take Up Rate tertinggi.
                     Klik baris untuk melihat grafik tren 8 minggu.
                   </caption>
                   <thead>
                     <tr>
-                      <th style={styles.thCell} scope="col">Rank</th>
-                      <th style={styles.thCell} scope="col">Wilayah</th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }} scope="col">
+                      <th className="px-3 py-2.5 text-left bg-slate-900 text-white text-xs font-semibold whitespace-nowrap" scope="col">Rank</th>
+                      <th className="px-3 py-2.5 text-left bg-slate-900 text-white text-xs font-semibold whitespace-nowrap" scope="col">Wilayah</th>
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap" scope="col">
                         Total Leads
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }} scope="col">
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap" scope="col">
                         Total Take Up
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }} scope="col">
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap" scope="col">
                         Take Up Rate
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }} scope="col">
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap" scope="col">
                         Avg. Transaksi
                       </th>
                     </tr>
@@ -393,18 +408,16 @@ const RegionalPerformancePage: React.FC = () => {
                   <tbody>
                     {data.regions.map((region, idx) => {
                       const isSelected = selectedRegion === region.wilayah;
-                      const baseRow = idx % 2 === 0 ? styles.tdEven : styles.tdOdd;
-                      const tdStyle = isSelected
-                        ? styles.tdSelected
-                        : baseRow;
+                      const tdBase = isSelected
+                        ? 'px-3 py-2.5 bg-[#005E6A]/10 border-b border-[#005E6A]/20 text-xs'
+                        : idx % 2 === 0
+                        ? 'px-3 py-2.5 bg-white border-b border-gray-100 text-xs'
+                        : 'px-3 py-2.5 bg-slate-50 border-b border-gray-100 text-xs';
 
                       return (
                         <tr
                           key={region.wilayah}
-                          style={{
-                            ...styles.tableRow,
-                            ...(isSelected ? styles.tableRowSelected : {}),
-                          }}
+                          className={`cursor-pointer hover:bg-slate-50 transition-colors${isSelected ? ' ring-2 ring-inset ring-[#005E6A]' : ''}`}
                           onClick={() => handleRowClick(region.wilayah)}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
@@ -417,35 +430,27 @@ const RegionalPerformancePage: React.FC = () => {
                           aria-selected={isSelected}
                           aria-label={`Wilayah ${region.region_name}, Take Up Rate ${formatRate(region.take_up_rate)}`}
                         >
-                          <td style={tdStyle}>{idx + 1}</td>
-                          <td style={tdStyle}>
-                            <span style={styles.regionName}>
+                          <td className={tdBase}>{idx + 1}</td>
+                          <td className={tdBase}>
+                            <span className="font-semibold text-slate-700">
                               {region.region_name}
                             </span>
-                            <span style={styles.regionCode}>
+                            <span className="text-slate-400 text-[10px]">
                               &nbsp;(W{region.wilayah})
                             </span>
                           </td>
-                          <td style={{ ...tdStyle, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatNumber(region.total_leads)}
                           </td>
-                          <td style={{ ...tdStyle, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatNumber(region.total_take_up)}
                           </td>
-                          <td style={{ ...tdStyle, textAlign: 'right' }}>
-                            <span
-                              style={
-                                region.take_up_rate >= 10
-                                  ? styles.rateHigh
-                                  : region.take_up_rate >= 5
-                                  ? styles.rateMid
-                                  : styles.rateLow
-                              }
-                            >
+                          <td className={`${tdBase} text-right`}>
+                            <span className={getTakeUpBadgeClasses(region.take_up_rate)}>
                               {formatRate(region.take_up_rate)}
                             </span>
                           </td>
-                          <td style={{ ...tdStyle, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatCurrency(region.avg_transaction_value)}
                           </td>
                         </tr>
@@ -458,16 +463,20 @@ const RegionalPerformancePage: React.FC = () => {
 
             {/* ── 8-week trend chart ────────────────────────────────── */}
             {selectedRegion !== null && (
-              <div style={styles.card} aria-live="polite" aria-atomic="true">
-                <h2 style={styles.sectionTitle}>
+              <div
+                className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
                   Tren 8 Minggu —{' '}
-                  <span style={{ color: '#3182ce' }}>
+                  <span className="text-[#005E6A]">
                     {selectedRegionMetric?.region_name ?? `Wilayah ${selectedRegion}`}
                   </span>
                 </h2>
 
                 {hasTrendData ? (
-                  <div style={styles.chartContainer}>
+                  <div className="relative" style={{ height: '340px' }}>
                     <Line
                       data={buildTrendChartData(
                         data.trend,
@@ -485,12 +494,10 @@ const RegionalPerformancePage: React.FC = () => {
                     />
                   </div>
                 ) : (
-                  <div style={styles.trendEmpty} role="status">
-                    <span style={styles.stateIcon} aria-hidden="true">📉</span>
-                    <p style={styles.statusText}>
-                      Data tren tidak tersedia untuk wilayah ini.
-                    </p>
-                  </div>
+                  <EmptyState
+                    message="Tidak ada data tersedia"
+                    hint="Data tren tidak tersedia untuk wilayah ini."
+                  />
                 )}
               </div>
             )}
@@ -499,283 +506,6 @@ const RegionalPerformancePage: React.FC = () => {
       </div>
     </DashboardLayout>
   );
-};
-
-// ── Styles ────────────────────────────────────────────────────────────────
-
-const styles: Record<string, React.CSSProperties> = {
-  pageRoot: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px',
-    minHeight: '100%',
-  },
-  pageTitle: {
-    margin: 0,
-    fontSize: '1.75rem',
-    fontWeight: 700,
-    color: '#1a365d',
-  },
-
-  // ── Filter card
-  card: {
-    background: '#f7fafc',
-    border: '1px solid #e2e8f0',
-    borderRadius: '8px',
-    padding: '16px',
-  },
-  sectionTitle: {
-    margin: '0 0 12px 0',
-    fontSize: '1rem',
-    fontWeight: 600,
-    color: '#1a365d',
-  },
-  subtleNote: {
-    fontSize: '0.8rem',
-    fontWeight: 400,
-    color: '#718096',
-  },
-  filterRow: {
-    display: 'flex',
-    gap: '16px',
-    flexWrap: 'wrap' as const,
-    alignItems: 'flex-end',
-  },
-  filterGroup: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '4px',
-  },
-  label: {
-    fontSize: '0.875rem',
-    fontWeight: 600,
-    color: '#4a5568',
-  },
-  hintText: {
-    fontSize: '0.75rem',
-    color: '#a0aec0',
-  },
-  input: {
-    padding: '0.5rem 0.75rem',
-    border: '1px solid #cbd5e0',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    width: '240px',
-    outline: 'none',
-    background: '#fff',
-  },
-  select: {
-    padding: '0.5rem 0.75rem',
-    border: '1px solid #cbd5e0',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    background: '#fff',
-    cursor: 'pointer',
-    minWidth: '200px',
-  },
-  primaryButton: {
-    padding: '0.5rem 1.25rem',
-    background: '#1a365d',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    fontWeight: 600,
-    cursor: 'pointer',
-  },
-  primaryButtonDisabled: {
-    padding: '0.5rem 1.25rem',
-    background: '#a0aec0',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    fontWeight: 600,
-    cursor: 'not-allowed',
-  },
-
-  // ── States
-  centerState: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '48px 16px',
-    gap: '12px',
-    background: '#f7fafc',
-    border: '1px solid #e2e8f0',
-    borderRadius: '8px',
-    textAlign: 'center' as const,
-  },
-  errorState: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '32px 16px',
-    gap: '10px',
-    background: '#fff5f5',
-    border: '1px solid #feb2b2',
-    borderRadius: '8px',
-    textAlign: 'center' as const,
-  },
-  spinner: {
-    width: '40px',
-    height: '40px',
-    border: '4px solid #e2e8f0',
-    borderTopColor: '#3182ce',
-    borderRadius: '50%',
-    animation: 'spin 0.8s linear infinite',
-  },
-  stateIcon: {
-    fontSize: '2.5rem',
-  },
-  idleTitle: {
-    margin: 0,
-    color: '#1a365d',
-    fontSize: '1.1rem',
-    fontWeight: 700,
-  },
-  statusText: {
-    margin: 0,
-    color: '#4a5568',
-    fontSize: '0.9rem',
-  },
-  errorText: {
-    margin: 0,
-    color: '#c53030',
-    fontSize: '1rem',
-    fontWeight: 600,
-  },
-
-  // ── Campaign banner
-  campaignBanner: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    padding: '10px 14px',
-    background: '#ebf8ff',
-    border: '1px solid #bee3f8',
-    borderRadius: '6px',
-    flexWrap: 'wrap' as const,
-  },
-  campaignBannerLabel: {
-    fontSize: '0.875rem',
-    fontWeight: 600,
-    color: '#2b6cb0',
-  },
-  campaignBannerValue: {
-    fontSize: '0.875rem',
-    color: '#1a365d',
-    fontWeight: 700,
-  },
-  programTag: {
-    background: '#c6f6d5',
-    border: '1px solid #9ae6b4',
-    color: '#276749',
-    borderRadius: '4px',
-    padding: '2px 8px',
-    fontSize: '0.8rem',
-    fontWeight: 600,
-  },
-
-  // ── Table
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse' as const,
-    fontSize: '0.875rem',
-  },
-  thCell: {
-    padding: '0.6rem 0.75rem',
-    textAlign: 'left' as const,
-    background: '#1a365d',
-    color: '#fff',
-    fontWeight: 600,
-    whiteSpace: 'nowrap' as const,
-  },
-  tableRow: {
-    cursor: 'pointer',
-    transition: 'background 0.15s',
-  },
-  tableRowSelected: {
-    outline: '2px solid #3182ce',
-    outlineOffset: '-2px',
-  },
-  tdEven: {
-    padding: '0.6rem 0.75rem',
-    background: '#fff',
-    borderBottom: '1px solid #e2e8f0',
-  },
-  tdOdd: {
-    padding: '0.6rem 0.75rem',
-    background: '#f7fafc',
-    borderBottom: '1px solid #e2e8f0',
-  },
-  tdSelected: {
-    padding: '0.6rem 0.75rem',
-    background: '#ebf8ff',
-    borderBottom: '1px solid #bee3f8',
-  },
-  regionName: {
-    fontWeight: 600,
-    color: '#2d3748',
-  },
-  regionCode: {
-    color: '#718096',
-    fontSize: '0.8rem',
-  },
-
-  // ── Rate badges
-  rateHigh: {
-    background: '#c6f6d5',
-    color: '#276749',
-    borderRadius: '4px',
-    padding: '2px 7px',
-    fontWeight: 600,
-    fontSize: '0.85rem',
-  },
-  rateMid: {
-    background: '#fefcbf',
-    color: '#744210',
-    borderRadius: '4px',
-    padding: '2px 7px',
-    fontWeight: 600,
-    fontSize: '0.85rem',
-  },
-  rateLow: {
-    background: '#fff5f5',
-    color: '#c53030',
-    borderRadius: '4px',
-    padding: '2px 7px',
-    fontWeight: 600,
-    fontSize: '0.85rem',
-  },
-
-  // ── Trend chart
-  chartContainer: {
-    height: '340px',
-  },
-  trendEmpty: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    alignItems: 'center',
-    padding: '32px 16px',
-    gap: '10px',
-    textAlign: 'center' as const,
-  },
-
-  // ── Accessibility
-  visuallyHidden: {
-    position: 'absolute' as const,
-    width: '1px',
-    height: '1px',
-    padding: '0',
-    margin: '-1px',
-    overflow: 'hidden' as const,
-    clip: 'rect(0,0,0,0)',
-    whiteSpace: 'nowrap' as const,
-    border: '0',
-  },
 };
 
 export default RegionalPerformancePage;

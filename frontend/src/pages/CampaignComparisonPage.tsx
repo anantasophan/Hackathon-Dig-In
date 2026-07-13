@@ -6,11 +6,10 @@
  * Nilai Transaksi, and Durasi (hari).  Results are displayed in both
  * a comparison table and a grouped bar chart.
  *
- * Requirements: 2.1, 2.2, 2.3, 2.4, 2.5
+ * Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.11
  */
 
 import React, { useState, useCallback, useRef } from 'react';
-import './CampaignComparisonPage.css';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,6 +21,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import DashboardLayout from '../components/DashboardLayout';
+import { EmptyState, LoadingState, ErrorState } from '../components/StateComponents';
 import { api } from '../services/api';
 import type { CampaignMetric, CampaignComparisonResponse } from '../types/api';
 
@@ -143,222 +143,6 @@ const chartOptions = {
 };
 
 // ---------------------------------------------------------------------------
-// Styles
-// ---------------------------------------------------------------------------
-
-const styles = {
-  container: {
-    padding: '1.5rem',
-    maxWidth: '1200px',
-  } as React.CSSProperties,
-
-  heading: {
-    fontSize: '1.5rem',
-    fontWeight: 700 as const,
-    color: '#1a365d',
-    marginBottom: '1.5rem',
-    marginTop: 0,
-  } as React.CSSProperties,
-
-  card: {
-    backgroundColor: '#f7fafc',
-    borderRadius: '8px',
-    padding: '1.25rem',
-    marginBottom: '1.5rem',
-    border: '1px solid #e2e8f0',
-  } as React.CSSProperties,
-
-  sectionTitle: {
-    fontSize: '1rem',
-    fontWeight: 600 as const,
-    color: '#1a365d',
-    marginBottom: '0.75rem',
-    marginTop: 0,
-  } as React.CSSProperties,
-
-  inputRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    flexWrap: 'wrap' as const,
-  } as React.CSSProperties,
-
-  input: {
-    padding: '0.5rem 0.75rem',
-    border: '1px solid #cbd5e0',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    width: '220px',
-    outline: 'none',
-  } as React.CSSProperties,
-
-  addButton: {
-    padding: '0.5rem 1rem',
-    backgroundColor: '#1a365d',
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    cursor: 'pointer',
-  } as React.CSSProperties,
-
-  addButtonDisabled: {
-    padding: '0.5rem 1rem',
-    backgroundColor: '#a0aec0',
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    cursor: 'not-allowed',
-  } as React.CSSProperties,
-
-  chipRow: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: '0.5rem',
-    marginTop: '0.75rem',
-  } as React.CSSProperties,
-
-  chip: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '0.35rem',
-    padding: '0.3rem 0.6rem',
-    backgroundColor: '#bee3f8',
-    color: '#1a365d',
-    borderRadius: '12px',
-    fontSize: '0.85rem',
-    fontWeight: 500 as const,
-  } as React.CSSProperties,
-
-  chipRemove: {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    color: '#1a365d',
-    fontSize: '0.85rem',
-    padding: '0',
-    lineHeight: 1,
-    fontWeight: 700 as const,
-  } as React.CSSProperties,
-
-  errorText: {
-    color: '#c53030',
-    fontSize: '0.85rem',
-    marginTop: '0.5rem',
-  } as React.CSSProperties,
-
-  select: {
-    padding: '0.5rem 0.75rem',
-    border: '1px solid #cbd5e0',
-    borderRadius: '4px',
-    fontSize: '0.9rem',
-    backgroundColor: '#ffffff',
-    cursor: 'pointer',
-  } as React.CSSProperties,
-
-  compareButton: {
-    padding: '0.6rem 1.5rem',
-    backgroundColor: '#1a365d',
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '1rem',
-    fontWeight: 600 as const,
-    cursor: 'pointer',
-  } as React.CSSProperties,
-
-  compareButtonDisabled: {
-    padding: '0.6rem 1.5rem',
-    backgroundColor: '#a0aec0',
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '1rem',
-    fontWeight: 600 as const,
-    cursor: 'not-allowed',
-  } as React.CSSProperties,
-
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse' as const,
-    fontSize: '0.875rem',
-  } as React.CSSProperties,
-
-  thCell: {
-    padding: '0.6rem 0.75rem',
-    textAlign: 'left' as const,
-    backgroundColor: '#1a365d',
-    color: '#ffffff',
-    fontWeight: 600 as const,
-    whiteSpace: 'nowrap' as const,
-  } as React.CSSProperties,
-
-  tdEven: {
-    padding: '0.6rem 0.75rem',
-    backgroundColor: '#ffffff',
-    borderBottom: '1px solid #e2e8f0',
-  } as React.CSSProperties,
-
-  tdOdd: {
-    padding: '0.6rem 0.75rem',
-    backgroundColor: '#f7fafc',
-    borderBottom: '1px solid #e2e8f0',
-  } as React.CSSProperties,
-
-  spinnerContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '3rem',
-    gap: '0.75rem',
-  } as React.CSSProperties,
-
-  spinner: {
-    width: 36,
-    height: 36,
-    border: '4px solid #e2e8f0',
-    borderTopColor: '#1a365d',
-    borderRadius: '50%',
-    animation: 'spin 0.8s linear infinite',
-  } as React.CSSProperties,
-
-  emptyState: {
-    textAlign: 'center' as const,
-    padding: '3rem',
-    color: '#718096',
-    fontSize: '0.95rem',
-  } as React.CSSProperties,
-
-  errorState: {
-    padding: '1rem',
-    backgroundColor: '#fff5f5',
-    border: '1px solid #feb2b2',
-    borderRadius: '6px',
-    color: '#c53030',
-    fontSize: '0.9rem',
-  } as React.CSSProperties,
-
-  groupByRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-    flexWrap: 'wrap' as const,
-  } as React.CSSProperties,
-
-  label: {
-    fontSize: '0.9rem',
-    color: '#4a5568',
-    fontWeight: 500 as const,
-  } as React.CSSProperties,
-
-  chartWrapper: {
-    maxHeight: '420px',
-    position: 'relative' as const,
-  } as React.CSSProperties,
-};
-
-// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
@@ -464,26 +248,26 @@ const CampaignComparisonPage: React.FC = () => {
 
   return (
     <DashboardLayout>
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-
-      <div style={styles.container}>
-        {/* ── Page heading ─────────────────────────────────────────────── */}
-        <h1 style={styles.heading}>Perbandingan Campaign</h1>
-
+      <div className="p-6 max-w-[1200px]">
         {/* ── Campaign ID input card ────────────────────────────────────── */}
-        <div style={styles.card}>
-          <h2 style={styles.sectionTitle}>Pilih Campaign (2–5 campaign)</h2>
+        <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm mb-4">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+            Pilih Campaign (2–5 campaign)
+          </h2>
 
           {/* Input row */}
-          <div style={styles.inputRow}>
-            <label htmlFor="campaign-id-input" style={styles.label}>
+          <div className="flex items-center gap-2 flex-wrap">
+            <label
+              htmlFor="campaign-id-input"
+              className="text-xs font-bold uppercase tracking-wider text-gray-600"
+            >
               Campaign ID:
             </label>
             <input
               id="campaign-id-input"
               ref={inputRef}
               type="text"
-              style={styles.input}
+              className="w-56 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
               placeholder="Masukkan Campaign ID"
               value={inputValue}
               onChange={(e) => {
@@ -498,7 +282,11 @@ const CampaignComparisonPage: React.FC = () => {
             />
             <button
               type="button"
-              style={canAdd ? styles.addButton : styles.addButtonDisabled}
+              className={
+                canAdd
+                  ? 'px-4 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+                  : 'px-4 py-2 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
+              }
               onClick={handleAddCampaign}
               disabled={!canAdd}
               aria-label="Tambah campaign"
@@ -510,17 +298,17 @@ const CampaignComparisonPage: React.FC = () => {
           {/* Inline error messages */}
           <div id="campaign-input-error" role="alert" aria-live="polite">
             {maxLimitError && (
-              <p style={styles.errorText}>
+              <p className="text-rose-600 text-xs mt-1">
                 Maksimal 5 campaign dapat dipilih.
               </p>
             )}
             {duplicateError && (
-              <p style={styles.errorText}>
+              <p className="text-rose-600 text-xs mt-1">
                 Campaign ID ini sudah ditambahkan.
               </p>
             )}
             {emptyError && (
-              <p style={styles.errorText}>
+              <p className="text-rose-600 text-xs mt-1">
                 Masukkan Campaign ID terlebih dahulu.
               </p>
             )}
@@ -528,17 +316,25 @@ const CampaignComparisonPage: React.FC = () => {
 
           {/* Selected campaign chips */}
           {selectedIds.length > 0 && (
-            <div style={styles.chipRow} role="list" aria-label="Campaign terpilih">
+            <div
+              className="flex flex-wrap gap-2 mt-3"
+              role="list"
+              aria-label="Campaign terpilih"
+            >
               {selectedIds.map((id) => (
-                <span key={id} style={styles.chip} role="listitem">
+                <span
+                  key={id}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#005E6A]/20 border border-[#005E6A] text-[#005E6A] rounded-full text-xs font-medium"
+                  role="listitem"
+                >
                   {id}
                   <button
                     type="button"
-                    style={styles.chipRemove}
+                    className="hover:text-rose-600 transition-colors"
                     onClick={() => handleRemoveCampaign(id)}
                     aria-label={`Hapus campaign ${id}`}
                   >
-                    ×
+                    &times;
                   </button>
                 </span>
               ))}
@@ -547,14 +343,17 @@ const CampaignComparisonPage: React.FC = () => {
         </div>
 
         {/* ── Group-by & Compare controls ───────────────────────────────── */}
-        <div style={styles.card}>
-          <div style={styles.groupByRow}>
-            <label htmlFor="group-by-select" style={styles.label}>
+        <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm mb-4">
+          <div className="flex items-center gap-2 flex-wrap">
+            <label
+              htmlFor="group-by-select"
+              className="text-xs font-bold uppercase tracking-wider text-gray-600"
+            >
               Kelompokkan berdasarkan:
             </label>
             <select
               id="group-by-select"
-              style={styles.select}
+              className="px-3 py-2 border border-gray-300 rounded-lg text-xs bg-white focus:ring-2 focus:ring-[#005E6A] focus:outline-none"
               value={groupBy}
               onChange={(e) => setGroupBy(e.target.value as GroupByValue)}
             >
@@ -567,16 +366,20 @@ const CampaignComparisonPage: React.FC = () => {
 
             <button
               type="button"
-              style={canCompare ? styles.compareButton : styles.compareButtonDisabled}
+              className={
+                canCompare
+                  ? 'px-6 py-2.5 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+                  : 'px-6 py-2.5 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
+              }
               onClick={handleCompare}
               disabled={!canCompare || isLoading}
               aria-disabled={!canCompare || isLoading}
             >
-              {isLoading ? 'Memuat…' : 'Bandingkan'}
+              {isLoading ? 'Memuat' : 'Bandingkan'}
             </button>
 
             {!canCompare && (
-              <span style={{ fontSize: '0.85rem', color: '#718096' }}>
+              <span className="text-xs text-gray-400">
                 Pilih minimal 2 campaign untuk membandingkan.
               </span>
             )}
@@ -585,77 +388,87 @@ const CampaignComparisonPage: React.FC = () => {
 
         {/* ── Loading state ─────────────────────────────────────────────── */}
         {isLoading && (
-          <div style={styles.spinnerContainer} role="status" aria-label="Memuat data">
-            <div style={styles.spinner} />
-            <span style={{ color: '#4a5568' }}>Memuat data perbandingan…</span>
-          </div>
+          <LoadingState />
         )}
 
         {/* ── Error state ───────────────────────────────────────────────── */}
         {apiError && !isLoading && (
-          <div style={styles.errorState} role="alert">
-            <strong>Gagal memuat data:</strong> {apiError}
-          </div>
+          <ErrorState message={apiError} />
         )}
 
-        {/* ── Empty state ───────────────────────────────────────────────── */}
+        {/* ── Empty / idle state ────────────────────────────────────────── */}
         {!isLoading && !apiError && result === null && (
-          <div style={styles.emptyState}>
-            <p>Pilih 2–5 campaign dan tekan <strong>Bandingkan</strong> untuk melihat hasil perbandingan.</p>
-          </div>
+          <EmptyState
+            message="Tidak ada data tersedia"
+            hint="Pilih 2–5 campaign dan tekan Bandingkan untuk melihat hasil perbandingan."
+          />
         )}
 
         {/* ── Results ───────────────────────────────────────────────────── */}
         {!isLoading && result !== null && (
           <>
             {/* Comparison table */}
-            <div style={styles.card}>
-              <h2 style={styles.sectionTitle}>Tabel Perbandingan</h2>
-              <div style={{ overflowX: 'auto' }}>
-                <table style={styles.table} aria-label="Tabel perbandingan campaign">
+            <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm mb-4">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+                Tabel Perbandingan
+              </h2>
+              <div className="overflow-x-auto">
+                <table
+                  className="w-full border-collapse text-xs"
+                  aria-label="Tabel perbandingan campaign"
+                >
                   <thead>
                     <tr>
-                      <th style={styles.thCell}>Campaign ID</th>
-                      <th style={styles.thCell}>Nama Campaign</th>
-                      <th style={styles.thCell}>Flag Program</th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }}>
+                      <th className="px-3 py-2.5 text-left bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
+                        Campaign ID
+                      </th>
+                      <th className="px-3 py-2.5 text-left bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
+                        Nama Campaign
+                      </th>
+                      <th className="px-3 py-2.5 text-left bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
+                        Flag Program
+                      </th>
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
                         Total Leads
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }}>
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
                         Total Take Up
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }}>
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
                         Take-Up Rate (%)
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }}>
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
                         Nilai Transaksi (Rp)
                       </th>
-                      <th style={{ ...styles.thCell, textAlign: 'right' }}>
+                      <th className="px-3 py-2.5 text-right bg-slate-900 text-white text-xs font-semibold whitespace-nowrap">
                         Durasi (hari)
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {result.campaigns.map((c, idx) => {
-                      const td = idx % 2 === 0 ? styles.tdEven : styles.tdOdd;
+                      const tdBase =
+                        idx % 2 === 0
+                          ? 'px-3 py-2.5 bg-white border-b border-gray-100 text-xs'
+                          : 'px-3 py-2.5 bg-slate-50 border-b border-gray-100 text-xs';
                       return (
                         <tr key={c.campaign_id}>
-                          <td style={td}>{c.campaign_id}</td>
-                          <td style={td}>{c.campaign_name}</td>
-                          <td style={td}>{c.flag_program}</td>
-                          <td style={{ ...td, textAlign: 'right' }}>
+                          <td className={tdBase}>{c.campaign_id}</td>
+                          <td className={tdBase}>{c.campaign_name}</td>
+                          <td className={tdBase}>{c.flag_program}</td>
+                          <td className={`${tdBase} text-right`}>
                             {formatNumber(c.total_leads)}
                           </td>
-                          <td style={{ ...td, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatNumber(c.total_take_up)}
                           </td>
-                          <td style={{ ...td, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatPercent(c.take_up_rate)}
                           </td>
-                          <td style={{ ...td, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatCurrency(c.total_transaction_value)}
                           </td>
-                          <td style={{ ...td, textAlign: 'right' }}>
+                          <td className={`${tdBase} text-right`}>
                             {formatNumber(c.duration_days)}
                           </td>
                         </tr>
@@ -667,16 +480,19 @@ const CampaignComparisonPage: React.FC = () => {
             </div>
 
             {/* Bar chart */}
-            <div style={styles.card}>
-              <h2 style={styles.sectionTitle}>Grafik Perbandingan</h2>
-              <div style={styles.chartWrapper}>
+            <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm mb-4">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+                Grafik Perbandingan
+              </h2>
+              {/* Chart.js requires explicit pixel height — inline style exception */}
+              <div className="relative" style={{ height: '420px' }}>
                 <Bar
                   data={buildChartData(result.campaigns)}
                   options={chartOptions}
                   aria-label="Grafik perbandingan metrik campaign"
                 />
               </div>
-              <p style={{ fontSize: '0.8rem', color: '#718096', marginTop: '0.5rem' }}>
+              <p className="text-xs text-gray-400 mt-2">
                 * Nilai Transaksi diskalakan ke jutaan Rupiah (Rp juta) untuk keterbacaan grafik.
               </p>
             </div>

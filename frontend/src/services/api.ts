@@ -117,7 +117,12 @@ const apiClient: AxiosInstance = axios.create({
 // Request interceptor — attach Cognito id-token
 // ---------------------------------------------------------------------------
 
+const IS_LOCAL_DEV = process.env['REACT_APP_API_GATEWAY_URL']?.includes('localhost');
+
 apiClient.interceptors.request.use(async (config) => {
+  // Skip Cognito auth in local dev mode — backend has no auth middleware
+  if (IS_LOCAL_DEV) return config;
+
   try {
     const session = await fetchAuthSession();
     const token = session.tokens?.idToken?.toString();

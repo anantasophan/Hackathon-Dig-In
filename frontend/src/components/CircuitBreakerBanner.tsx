@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import { AlertTriangle } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -27,47 +28,6 @@ export interface CircuitBreakerBannerProps {
    *  Should reset the circuit breaker state and re-fetch data. */
   onReset: () => void;
 }
-
-// ---------------------------------------------------------------------------
-// Styles (inline to avoid an external CSS dependency)
-// ---------------------------------------------------------------------------
-
-const bannerStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: '1rem',
-  padding: '0.875rem 1.25rem',
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffc107',
-  borderRadius: '6px',
-  color: '#664d03',
-  fontSize: '0.9375rem',
-  lineHeight: '1.5',
-  marginBottom: '1rem',
-};
-
-const iconStyle: React.CSSProperties = {
-  fontSize: '1.25rem',
-  flexShrink: 0,
-};
-
-const messageStyle: React.CSSProperties = {
-  flex: 1,
-};
-
-const retryButtonStyle: React.CSSProperties = {
-  padding: '0.375rem 1rem',
-  fontSize: '0.875rem',
-  fontWeight: 600,
-  color: '#fff',
-  backgroundColor: '#f0a500',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  whiteSpace: 'nowrap',
-  flexShrink: 0,
-};
 
 // ---------------------------------------------------------------------------
 // Component
@@ -104,23 +64,17 @@ export const CircuitBreakerBanner: React.FC<CircuitBreakerBannerProps> = ({
     <div
       role="alert"
       aria-live="assertive"
-      style={bannerStyle}
+      className="flex items-center justify-between gap-4 px-5 py-3.5 mb-4 bg-amber-50 border border-amber-300 rounded-lg text-amber-800 text-sm leading-relaxed"
     >
-      <span style={iconStyle} aria-hidden="true">⚠️</span>
-      <span style={messageStyle}>
+      <AlertTriangle className="w-5 h-5 flex-shrink-0 text-amber-600" aria-hidden="true" />
+      <span className="flex-1">
         Layanan sementara tidak tersedia ({failureCount} kegagalan berturut-turut).
         Harap coba lagi nanti.
       </span>
       <button
         type="button"
-        style={retryButtonStyle}
+        className="flex-shrink-0 whitespace-nowrap px-4 py-1.5 text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 rounded transition-colors"
         onClick={onReset}
-        onMouseOver={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#d4920a';
-        }}
-        onMouseOut={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#f0a500';
-        }}
       >
         Coba Lagi
       </button>

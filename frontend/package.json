@@ -7,24 +7,33 @@
     "aws-amplify": "6.3.6",
     "axios": "1.6.8",
     "chart.js": "4.4.2",
+    "lucide-react": "0.378.0",
     "react": "18.2.0",
     "react-chartjs-2": "5.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.22.3",
     "react-scripts": "5.0.1",
+    "tailwindcss": "3.4.1",
     "typescript": "4.9.5",
     "web-vitals": "2.1.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "29.5.12",
     "@types/node": "16.18.96",
     "@types/react": "18.2.73",
     "@types/react-dom": "18.2.23",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
+    "autoprefixer": "10.4.19",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.0",
+    "fast-check": "^3.19.0",
+    "postcss": "8.4.38",
     "prettier": "3.2.5"
   },
   "scripts": {
@@ -36,10 +45,21 @@
     "format": "prettier --write src/**/*.{ts,tsx,css}"
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"]
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

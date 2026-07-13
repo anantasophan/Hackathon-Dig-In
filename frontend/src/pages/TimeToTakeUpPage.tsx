@@ -19,10 +19,11 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { Clock, Timer, TrendingDown, TrendingUp, Users } from 'lucide-react';
 import DashboardLayout from '../components/DashboardLayout';
+import { EmptyState, LoadingState, ErrorState } from '../components/StateComponents';
 import { api } from '../services/api';
 import type { TimeAnalysisResponse } from '../types/api';
-import './TimeToTakeUpPage.css';
 
 // ---------------------------------------------------------------------------
 // Chart.js registration
@@ -120,16 +121,16 @@ const chartOptions = {
 interface StatCardProps {
   label: string;
   value: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const StatCard: React.FC<StatCardProps> = ({ label, value, icon }) => (
-  <div className="ttu-stat-card" role="region" aria-label={label}>
-    <span className="ttu-stat-card__icon" aria-hidden="true">
-      {icon}
-    </span>
-    <span className="ttu-stat-card__label">{label}</span>
-    <span className="ttu-stat-card__value">{value}</span>
+  <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm flex items-start gap-3">
+    <div className="flex-shrink-0 text-[#005E6A]">{icon}</div>
+    <div>
+      <span className="text-xs font-medium text-slate-400 block">{label}</span>
+      <span className="text-2xl font-bold text-slate-700">{value}</span>
+    </div>
   </div>
 );
 
@@ -203,26 +204,23 @@ const TimeToTakeUpPage: React.FC = () => {
 
   return (
     <DashboardLayout>
-      {/* Keyframe for spinner */}
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-
-      <div className="ttu-page">
+      <div className="flex flex-col gap-4">
         {/* ── Page header ─────────────────────────────────────────────── */}
-        <h1 className="ttu-page__title">Time to Take Up</h1>
+        <h1 className="text-md font-bold text-gray-700">Time to Take Up</h1>
 
         {/* ── Input card ──────────────────────────────────────────────── */}
-        <div className="ttu-card">
-          <h2 className="ttu-card__heading">Parameter Analisis</h2>
+        <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Parameter Analisis</h2>
 
           {/* Campaign ID row */}
-          <div className="ttu-input-row">
-            <label htmlFor="ttu-campaign-id" className="ttu-label">
-              Campaign ID <span className="ttu-required" aria-hidden="true">*</span>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="ttu-campaign-id" className="text-xs font-bold uppercase tracking-wider text-gray-600">
+              Campaign ID <span className="text-rose-500" aria-hidden="true">*</span>
             </label>
             <input
               id="ttu-campaign-id"
               type="text"
-              className="ttu-input"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
               placeholder="Masukkan Campaign ID"
               value={campaignId}
               onChange={(e) => setcampaignId(e.target.value)}
@@ -232,15 +230,15 @@ const TimeToTakeUpPage: React.FC = () => {
           </div>
 
           {/* Filters row */}
-          <div className="ttu-filters-row">
+          <div className="flex gap-4 flex-wrap mt-3">
             {/* Channel filter */}
-            <div className="ttu-filter-group">
-              <label htmlFor="ttu-channel" className="ttu-label">
+            <div className="flex flex-col gap-1">
+              <label htmlFor="ttu-channel" className="text-xs font-bold uppercase tracking-wider text-gray-600">
                 Channel (opsional)
               </label>
               <select
                 id="ttu-channel"
-                className="ttu-select"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-xs bg-white focus:ring-2 focus:ring-[#005E6A] focus:outline-none"
                 value={channel}
                 onChange={(e) => setChannel(e.target.value)}
                 aria-label="Filter channel"
@@ -255,14 +253,14 @@ const TimeToTakeUpPage: React.FC = () => {
             </div>
 
             {/* Region filter */}
-            <div className="ttu-filter-group">
-              <label htmlFor="ttu-region" className="ttu-label">
+            <div className="flex flex-col gap-1">
+              <label htmlFor="ttu-region" className="text-xs font-bold uppercase tracking-wider text-gray-600">
                 Wilayah / Region (opsional)
               </label>
               <input
                 id="ttu-region"
                 type="text"
-                className="ttu-input ttu-input--short"
+                className="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
                 placeholder="1–17"
                 value={region}
                 onChange={(e) => {
@@ -280,10 +278,13 @@ const TimeToTakeUpPage: React.FC = () => {
           </div>
 
           {/* Action button */}
-          <div className="ttu-action-row">
+          <div className="mt-4">
             <button
               type="button"
-              className={`ttu-btn-primary${campaignId.trim() === '' ? ' ttu-btn-primary--disabled' : ''}`}
+              className={campaignId.trim() === '' || loading
+                ? 'px-5 py-2 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
+                : 'px-5 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+              }
               onClick={() => void handleFetch()}
               disabled={campaignId.trim() === '' || loading}
               aria-disabled={campaignId.trim() === '' || loading}
@@ -297,37 +298,25 @@ const TimeToTakeUpPage: React.FC = () => {
 
         {/* Pre-fetch prompt */}
         {!hasFetched && !loading && (
-          <div className="ttu-state-box ttu-state-box--info" role="status">
-            <span className="ttu-state-box__icon" aria-hidden="true">📊</span>
-            <p className="ttu-state-box__text">
-              Masukkan campaign ID untuk melihat analisis
-            </p>
+          <div className="text-center py-12 text-gray-400" role="status">
+            <Clock className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+            <p className="text-sm font-medium">Masukkan campaign ID untuk melihat analisis</p>
           </div>
         )}
 
         {/* Loading */}
         {loading && (
-          <div className="ttu-state-box" role="status" aria-busy="true" aria-label="Memuat data">
-            <div className="ttu-spinner" />
-            <p className="ttu-state-box__text">Memuat data analisis…</p>
-          </div>
+          <LoadingState />
         )}
 
         {/* Error */}
         {!loading && error && (
-          <div className="ttu-state-box ttu-state-box--error" role="alert">
-            <span className="ttu-state-box__icon" aria-hidden="true">⚠️</span>
-            <p className="ttu-state-box__text ttu-state-box__text--error">{error}</p>
-            <p className="ttu-state-box__sub">Silakan periksa Campaign ID atau coba lagi.</p>
-          </div>
+          <ErrorState message={error} />
         )}
 
         {/* Empty state */}
         {!loading && !error && emptyMessage && (
-          <div className="ttu-state-box" role="status">
-            <span className="ttu-state-box__icon" aria-hidden="true">📭</span>
-            <p className="ttu-state-box__text">{emptyMessage}</p>
-          </div>
+          <EmptyState message={emptyMessage} />
         )}
 
         {/* Data state */}
@@ -335,47 +324,47 @@ const TimeToTakeUpPage: React.FC = () => {
           <>
             {/* Campaign name subtitle */}
             {data.campaign_name && (
-              <p className="ttu-campaign-name">
+              <p className="text-sm text-gray-600">
                 Kampanye: <strong>{data.campaign_name}</strong>
               </p>
             )}
 
             {/* Stat cards */}
-            <div className="ttu-stats-row" role="list" aria-label="Statistik waktu take up">
+            <div className="grid grid-cols-2 gap-4" role="list" aria-label="Statistik waktu take up">
               <StatCard
                 label="Median"
                 value={`${data.stats.median_days} hari`}
-                icon="📊"
+                icon={<Timer className="w-5 h-5" />}
               />
               <StatCard
                 label="Rata-rata"
                 value={`${data.stats.mean_days.toFixed(1)} hari`}
-                icon="📈"
+                icon={<Clock className="w-5 h-5" />}
               />
               <StatCard
                 label="Minimum"
                 value={`${data.stats.min_days} hari`}
-                icon="⬇️"
+                icon={<TrendingDown className="w-5 h-5" />}
               />
               <StatCard
                 label="Maksimum"
                 value={`${data.stats.max_days} hari`}
-                icon="⬆️"
+                icon={<TrendingUp className="w-5 h-5" />}
               />
               <StatCard
                 label="Total Take Up"
                 value={`${data.stats.total_take_up.toLocaleString('id-ID')} nasabah`}
-                icon="✅"
+                icon={<Users className="w-5 h-5" />}
               />
             </div>
 
             {/* Histogram */}
-            <div className="ttu-card">
-              <h2 className="ttu-card__heading">Distribusi Waktu Take Up</h2>
-              <div className="ttu-chart-container" aria-label="Histogram distribusi waktu take up">
+            <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-sm">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Distribusi Waktu Take Up</h2>
+              <div style={{ height: '320px' }} aria-label="Histogram distribusi waktu take up">
                 <Bar data={buildChartData(data)} options={chartOptions} />
               </div>
-              <p className="ttu-chart-note">
+              <p className="text-[10px] text-gray-400 mt-2">
                 * Sumbu Y menunjukkan persentase nasabah yang melakukan take up dalam rentang waktu tersebut.
                 Hover pada bar untuk melihat jumlah nasabah.
               </p>

@@ -1,0 +1,112 @@
+[
+  {
+    "campaign_id": "C001",
+    "similar_campaign_id": "C003",
+    "campaign_name": "Digisales QRIS Nasabah Mass",
+    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "dimension_count": 2,
+    "similarity_score": 0.83,
+    "take_up_rate": 20.69,
+    "total_leads": 29,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C001",
+    "similar_campaign_id": "C004",
+    "campaign_name": "WA Blast Biaya Admin Emerald",
+    "matching_dimensions": ["media_blasting"],
+    "dimension_count": 1,
+    "similarity_score": 0.55,
+    "take_up_rate": 20.0,
+    "total_leads": 30,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C001",
+    "similar_campaign_id": "C005",
+    "campaign_name": "Email QRIS Nasabah Affluent",
+    "matching_dimensions": ["flag_program"],
+    "dimension_count": 1,
+    "similarity_score": 0.60,
+    "take_up_rate": 26.67,
+    "total_leads": 30,
+    "total_take_up": 8
+  },
+  {
+    "campaign_id": "C002",
+    "similar_campaign_id": "C004",
+    "campaign_name": "WA Blast Biaya Admin Emerald",
+    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "dimension_count": 2,
+    "similarity_score": 0.87,
+    "take_up_rate": 20.0,
+    "total_leads": 30,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C003",
+    "similar_campaign_id": "C001",
+    "campaign_name": "Cashback QRIS Agustus 2024",
+    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "dimension_count": 2,
+    "similarity_score": 0.83,
+    "take_up_rate": 20.0,
+    "total_leads": 30,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C003",
+    "similar_campaign_id": "C005",
+    "campaign_name": "Email QRIS Nasabah Affluent",
+    "matching_dimensions": ["flag_program"],
+    "dimension_count": 1,
+    "similarity_score": 0.58,
+    "take_up_rate": 26.67,
+    "total_leads": 30,
+    "total_take_up": 8
+  },
+  {
+    "campaign_id": "C004",
+    "similar_campaign_id": "C001",
+    "campaign_name": "Cashback QRIS Agustus 2024",
+    "matching_dimensions": ["media_blasting"],
+    "dimension_count": 1,
+    "similarity_score": 0.55,
+    "take_up_rate": 20.0,
+    "total_leads": 30,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C004",
+    "similar_campaign_id": "C002",
+    "campaign_name": "Migrasi Biaya Admin Q3 2024",
+    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "dimension_count": 2,
+    "similarity_score": 0.87,
+    "take_up_rate": 23.33,
+    "total_leads": 30,
+    "total_take_up": 7
+  },
+  {
+    "campaign_id": "C005",
+    "similar_campaign_id": "C001",
+    "campaign_name": "Cashback QRIS Agustus 2024",
+    "matching_dimensions": ["flag_program"],
+    "dimension_count": 1,
+    "similarity_score": 0.60,
+    "take_up_rate": 20.0,
+    "total_leads": 30,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C005",
+    "similar_campaign_id": "C003",
+    "campaign_name": "Digisales QRIS Nasabah Mass",
+    "matching_dimensions": ["flag_program"],
+    "dimension_count": 1,
+    "similarity_score": 0.58,
+    "take_up_rate": 20.69,
+    "total_leads": 29,
+    "total_take_up": 6
+  }
+]

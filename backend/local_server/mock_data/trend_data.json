@@ -1,0 +1,152 @@
+{
+  "C001": [
+    {
+      "period_start": "2024-08-01",
+      "period_end": "2024-08-07",
+      "total_leads": 8,
+      "total_take_up": 2,
+      "take_up_rate": 25.0
+    },
+    {
+      "period_start": "2024-08-08",
+      "period_end": "2024-08-14",
+      "total_leads": 7,
+      "total_take_up": 2,
+      "take_up_rate": 28.57
+    },
+    {
+      "period_start": "2024-08-15",
+      "period_end": "2024-08-21",
+      "total_leads": 8,
+      "total_take_up": 1,
+      "take_up_rate": 12.5
+    },
+    {
+      "period_start": "2024-08-22",
+      "period_end": "2024-08-31",
+      "total_leads": 7,
+      "total_take_up": 1,
+      "take_up_rate": 14.29
+    }
+  ],
+  "C002": [
+    {
+      "period_start": "2024-07-01",
+      "period_end": "2024-07-07",
+      "total_leads": 8,
+      "total_take_up": 2,
+      "take_up_rate": 25.0
+    },
+    {
+      "period_start": "2024-07-08",
+      "period_end": "2024-07-14",
+      "total_leads": 7,
+      "total_take_up": 1,
+      "take_up_rate": 14.29
+    },
+    {
+      "period_start": "2024-07-15",
+      "period_end": "2024-07-21",
+      "total_leads": 6,
+      "total_take_up": 2,
+      "take_up_rate": 33.33
+    },
+    {
+      "period_start": "2024-07-22",
+      "period_end": "2024-07-31",
+      "total_leads": 9,
+      "total_take_up": 2,
+      "take_up_rate": 22.22
+    }
+  ],
+  "C003": [
+    {
+      "period_start": "2024-09-01",
+      "period_end": "2024-09-07",
+      "total_leads": 7,
+      "total_take_up": 2,
+      "take_up_rate": 28.57
+    },
+    {
+      "period_start": "2024-09-08",
+      "period_end": "2024-09-14",
+      "total_leads": 8,
+      "total_take_up": 1,
+      "take_up_rate": 12.5
+    },
+    {
+      "period_start": "2024-09-15",
+      "period_end": "2024-09-21",
+      "total_leads": 7,
+      "total_take_up": 2,
+      "take_up_rate": 28.57
+    },
+    {
+      "period_start": "2024-09-22",
+      "period_end": "2024-09-30",
+      "total_leads": 7,
+      "total_take_up": 1,
+      "take_up_rate": 14.29
+    }
+  ],
+  "C004": [
+    {
+      "period_start": "2024-10-01",
+      "period_end": "2024-10-07",
+      "total_leads": 8,
+      "total_take_up": 2,
+      "take_up_rate": 25.0
+    },
+    {
+      "period_start": "2024-10-08",
+      "period_end": "2024-10-14",
+      "total_leads": 7,
+      "total_take_up": 2,
+      "take_up_rate": 28.57
+    },
+    {
+      "period_start": "2024-10-15",
+      "period_end": "2024-10-21",
+      "total_leads": 8,
+      "total_take_up": 1,
+      "take_up_rate": 12.5
+    },
+    {
+      "period_start": "2024-10-22",
+      "period_end": "2024-10-31",
+      "total_leads": 7,
+      "total_take_up": 1,
+      "take_up_rate": 14.29
+    }
+  ],
+  "C005": [
+    {
+      "period_start": "2024-11-01",
+      "period_end": "2024-11-07",
+      "total_leads": 8,
+      "total_take_up": 2,
+      "take_up_rate": 25.0
+    },
+    {
+      "period_start": "2024-11-08",
+      "period_end": "2024-11-14",
+      "total_leads": 7,
+      "total_take_up": 2,
+      "take_up_rate": 28.57
+    },
+    {
+      "period_start": "2024-11-15",
+      "period_end": "2024-11-21",
+      "total_leads": 8,
+      "total_take_up": 1,
+      "take_up_rate": 12.5
+    },
+    {
+      "period_start": "2024-11-22",
+      "period_end": "2024-11-30",
+      "total_leads": 7,
+      "total_take_up": 3,
+      "take_up_rate": 42.86
+    }
+  ]
+}

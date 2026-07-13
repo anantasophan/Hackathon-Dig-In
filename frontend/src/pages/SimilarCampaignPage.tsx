@@ -8,18 +8,27 @@
  * A learning summary box is shown at the top of the results when the
  * API returns `learning_summary` data.
  *
- * Requirements: 6.1, 6.2, 6.3, 6.4, 6.5
+ * Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8
  */
 
 import React, { useState, useCallback } from 'react';
+import {
+  Search,
+  SearchX,
+  BarChart2,
+  GitCompareArrows,
+  Star,
+  Info,
+  TrendingUp,
+} from 'lucide-react';
 import DashboardLayout from '../components/DashboardLayout';
+import { LoadingState, ErrorState } from '../components/StateComponents';
 import { api } from '../services/api';
 import type {
   SimilarCampaignResponse,
   SimilarCampaignResult,
 } from '../types/api';
 import { useAuth } from '../hooks/useAuth';
-import './SimilarCampaignPage.css';
 
 // ── Local types ───────────────────────────────────────────────────────────
 
@@ -42,7 +51,7 @@ type SimilarCampaignData = SimilarCampaignResponse & {
 
 /**
  * The three valid dimensions for similarity matching.
- * Requirements: 6.1 — dimension filter checkboxes
+ * Requirements: 10.1 — dimension filter checkboxes
  */
 const DIMENSION_OPTIONS: Array<{
   value: 'flag_program' | 'media_blasting' | 'jenis_leads';
@@ -105,7 +114,11 @@ const CampaignCard: React.FC<CampaignCardProps> = ({
 
   return (
     <article
-      className={`sc-card${isSelected ? ' sc-card--selected' : ''}`}
+      className={
+        isSelected
+          ? 'bg-white p-4 border-2 border-[#005E6A] rounded-xl shadow-md cursor-pointer'
+          : 'bg-white p-4 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer'
+      }
       onClick={handleClick}
       onKeyDown={handleKey}
       tabIndex={0}
@@ -114,47 +127,67 @@ const CampaignCard: React.FC<CampaignCardProps> = ({
       aria-label={`Pilih campaign ${campaign.campaign_name}`}
     >
       {/* Campaign name + ID */}
-      <div className="sc-card__header">
-        <span className="sc-card__name">{campaign.campaign_name}</span>
-        <span className="sc-card__id">{campaign.campaign_id}</span>
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <span className="text-xs font-bold text-slate-700 truncate-2-lines">
+          {campaign.campaign_name}
+        </span>
+        <span className="text-[10px] text-slate-400 flex-shrink-0">
+          {campaign.campaign_id}
+        </span>
       </div>
 
       {/* Key metrics row */}
-      <div className="sc-card__metrics">
-        <div className="sc-card__metric">
-          <span className="sc-card__metric-label">Dimensi Cocok</span>
-          <span className="sc-card__metric-value sc-card__metric-value--bold">
+      <div className="grid grid-cols-2 gap-2 mt-2">
+        <div className="flex flex-col gap-0.5">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider">
+            Dimensi Cocok
+          </span>
+          <span className="text-sm font-bold text-slate-700">
             {campaign.dimension_count}
           </span>
         </div>
-        <div className="sc-card__metric">
-          <span className="sc-card__metric-label">Skor Kesamaan</span>
-          <span className="sc-card__metric-value sc-card__metric-value--score">
+        <div className="flex flex-col gap-0.5">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider">
+            Skor Kesamaan
+          </span>
+          <span className="text-sm font-bold text-[#005E6A]">
             {fmtScore(campaign.similarity_score)}
           </span>
         </div>
-        <div className="sc-card__metric">
-          <span className="sc-card__metric-label">Take-Up Rate</span>
-          <span className="sc-card__metric-value">
+        <div className="flex flex-col gap-0.5">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider">
+            Take-Up Rate
+          </span>
+          <span className="text-sm font-bold text-slate-700">
             {fmtPct(campaign.take_up_rate)}
           </span>
         </div>
-        <div className="sc-card__metric">
-          <span className="sc-card__metric-label">Total Leads</span>
-          <span className="sc-card__metric-value">{fmtNum(campaign.total_leads)}</span>
+        <div className="flex flex-col gap-0.5">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider">
+            Total Leads
+          </span>
+          <span className="text-sm font-bold text-slate-700">
+            {fmtNum(campaign.total_leads)}
+          </span>
         </div>
       </div>
 
-      {/* Matching dimension badges */}
-      {campaign.matching_dimensions.length > 0 && (
-        <div className="sc-card__badges" aria-label="Dimensi yang cocok">
-          {campaign.matching_dimensions.map((dim) => (
-            <span key={dim} className="sc-badge">
-              {dim}
-            </span>
-          ))}
-        </div>
-      )}
+      {/* Similarity score badge */}
+      <div className="flex flex-wrap gap-1 mt-2">
+        <span className="bg-[#005E6A]/20 border border-[#005E6A] text-[#005E6A] text-xs font-semibold rounded px-1.5 py-0.5">
+          {fmtScore(campaign.similarity_score)}
+        </span>
+
+        {/* Matching dimension badges */}
+        {campaign.matching_dimensions.map((dim) => (
+          <span
+            key={dim}
+            className="bg-[#005E6A]/10 border border-[#005E6A]/40 text-[#005E6A] text-[10px] font-medium rounded px-1.5 py-0.5"
+          >
+            {dim}
+          </span>
+        ))}
+      </div>
     </article>
   );
 };
@@ -166,81 +199,97 @@ interface ComparisonViewProps {
 }
 
 const ComparisonView: React.FC<ComparisonViewProps> = ({ campaign }) => (
-  <section className="sc-comparison" aria-label="Detail campaign terpilih">
-    <h2 className="sc-comparison__title">
+  <section
+    className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col gap-4"
+    aria-label="Detail campaign terpilih"
+  >
+    <h2 className="text-xs font-bold text-slate-700">
       Detail Campaign:{' '}
-      <span className="sc-comparison__campaign-name">{campaign.campaign_name}</span>
+      <span className="text-[#005E6A]">{campaign.campaign_name}</span>
     </h2>
 
     {/* Section 1 — Core metrics */}
-    <div className="sc-comparison__section">
-      <h3 className="sc-comparison__section-title">📊 Metrik Utama</h3>
-      <dl className="sc-comparison__dl">
-        <div className="sc-comparison__row">
-          <dt>Total Leads</dt>
-          <dd>{fmtNum(campaign.total_leads)}</dd>
+    <div className="flex flex-col gap-2">
+      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
+        <BarChart2 className="w-3.5 h-3.5" />
+        Metrik Utama
+      </h3>
+      <dl className="flex flex-col gap-1.5">
+        <div className="flex justify-between items-center text-xs">
+          <dt className="text-slate-500">Total Leads</dt>
+          <dd className="font-semibold text-slate-700">{fmtNum(campaign.total_leads)}</dd>
         </div>
-        <div className="sc-comparison__row">
-          <dt>Total Take Up</dt>
-          <dd>{fmtNum(campaign.total_take_up)}</dd>
+        <div className="flex justify-between items-center text-xs">
+          <dt className="text-slate-500">Total Take Up</dt>
+          <dd className="font-semibold text-slate-700">{fmtNum(campaign.total_take_up)}</dd>
         </div>
-        <div className="sc-comparison__row">
-          <dt>Take-Up Rate</dt>
-          <dd>{fmtPct(campaign.take_up_rate)}</dd>
+        <div className="flex justify-between items-center text-xs">
+          <dt className="text-slate-500">Take-Up Rate</dt>
+          <dd className="font-semibold text-slate-700">{fmtPct(campaign.take_up_rate)}</dd>
         </div>
-        {campaign.total_leads > 0 && (
-          /* total_transaction_value is an optional field — show only if non-zero */
-          <div className="sc-comparison__row">
-            <dt>Nilai Transaksi</dt>
-            <dd>
-              {typeof (campaign as SimilarCampaignResult & { total_transaction_value?: number })
-                .total_transaction_value === 'number'
-                ? fmtCurrency(
-                    (campaign as SimilarCampaignResult & { total_transaction_value?: number })
-                      .total_transaction_value ?? 0,
-                  )
-                : '—'}
-            </dd>
-          </div>
-        )}
+        {campaign.total_leads > 0 &&
+          typeof (campaign as SimilarCampaignResult & { total_transaction_value?: number })
+            .total_transaction_value === 'number' && (
+            <div className="flex justify-between items-center text-xs">
+              <dt className="text-slate-500">Nilai Transaksi</dt>
+              <dd className="font-semibold text-slate-700">
+                {fmtCurrency(
+                  (campaign as SimilarCampaignResult & { total_transaction_value?: number })
+                    .total_transaction_value ?? 0,
+                )}
+              </dd>
+            </div>
+          )}
       </dl>
     </div>
 
     {/* Section 2 — Matching dimensions */}
-    <div className="sc-comparison__section">
-      <h3 className="sc-comparison__section-title">🔗 Dimensi yang Cocok</h3>
-      <div className="sc-comparison__badges">
+    <div className="flex flex-col gap-2">
+      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
+        <GitCompareArrows className="w-3.5 h-3.5" />
+        Dimensi yang Cocok
+      </h3>
+      <div className="flex flex-wrap gap-1">
         {campaign.matching_dimensions.length > 0 ? (
           campaign.matching_dimensions.map((dim) => (
-            <span key={dim} className="sc-badge sc-badge--large">
+            <span
+              key={dim}
+              className="bg-[#005E6A]/10 border border-[#005E6A]/40 text-[#005E6A] text-[10px] font-medium rounded px-1.5 py-0.5"
+            >
               {dim}
             </span>
           ))
         ) : (
-          <span className="sc-comparison__empty">Tidak ada dimensi yang cocok.</span>
+          <span className="text-xs text-slate-400">Tidak ada dimensi yang cocok.</span>
         )}
       </div>
     </div>
 
     {/* Section 3 — Dimension count & similarity score */}
-    <div className="sc-comparison__section">
-      <h3 className="sc-comparison__section-title">📐 Skor Kesamaan</h3>
-      <dl className="sc-comparison__dl">
-        <div className="sc-comparison__row">
-          <dt>Jumlah Dimensi Cocok</dt>
-          <dd>{campaign.dimension_count}</dd>
+    <div className="flex flex-col gap-2">
+      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
+        <Star className="w-3.5 h-3.5" />
+        Skor Kesamaan
+      </h3>
+      <dl className="flex flex-col gap-1.5">
+        <div className="flex justify-between items-center text-xs">
+          <dt className="text-slate-500">Jumlah Dimensi Cocok</dt>
+          <dd className="font-semibold text-slate-700">{campaign.dimension_count}</dd>
         </div>
-        <div className="sc-comparison__row">
-          <dt>Skor Kesamaan</dt>
-          <dd>{fmtScore(campaign.similarity_score)}</dd>
+        <div className="flex justify-between items-center text-xs">
+          <dt className="text-slate-500">Skor Kesamaan</dt>
+          <dd className="font-semibold text-[#005E6A]">{fmtScore(campaign.similarity_score)}</dd>
         </div>
       </dl>
     </div>
 
-    {/* Section 4 — Customer / regional / time note (post-MVP) */}
-    <div className="sc-comparison__section sc-comparison__section--note">
-      <h3 className="sc-comparison__section-title">ℹ️ Data Lanjutan</h3>
-      <p className="sc-comparison__note">
+    {/* Section 4 — Advanced data note */}
+    <div className="flex flex-col gap-2 bg-slate-50 border border-gray-200 rounded-lg p-3">
+      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
+        <Info className="w-3.5 h-3.5" />
+        Data Lanjutan
+      </h3>
+      <p className="text-xs text-slate-500">
         Data detail segmen/regional/waktu memerlukan query lanjutan ke Athena
         (post-MVP)
       </p>
@@ -342,24 +391,22 @@ const SimilarCampaignPage: React.FC = () => {
 
   return (
     <DashboardLayout username={user?.username} onSignOut={signOut}>
-      {/* Spinner keyframe — injected once */}
-      <style>{`@keyframes sc-spin { to { transform: rotate(360deg); } }`}</style>
-
-      <div className="sc-page">
-        {/* ── Page header ─────────────────────────────────────────── */}
-        <h1 className="sc-page__title">Campaign Serupa</h1>
+      <div className="flex flex-col gap-4">
 
         {/* ── Search form card ─────────────────────────────────────── */}
-        <div className="sc-form-card">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col gap-4">
           {/* Reference ID row */}
-          <div className="sc-form-row">
-            <label htmlFor="sc-ref-input" className="sc-form-label">
+          <div className="flex flex-wrap items-center gap-2">
+            <label
+              htmlFor="sc-ref-input"
+              className="text-xs font-bold uppercase tracking-wider text-gray-600 flex-shrink-0"
+            >
               Campaign Referensi ID:
             </label>
             <input
               id="sc-ref-input"
               type="text"
-              className="sc-input"
+              className="flex-1 min-w-[200px] px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
               placeholder="Masukkan Campaign ID referensi"
               value={referenceId}
               onChange={(e) => setReferenceId(e.target.value)}
@@ -369,26 +416,31 @@ const SimilarCampaignPage: React.FC = () => {
             />
             <button
               type="button"
-              className="sc-btn-primary"
+              className={
+                canSearch
+                  ? 'flex items-center gap-2 px-4 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+                  : 'flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
+              }
               onClick={handleSearch}
               disabled={!canSearch}
               aria-label="Cari campaign serupa"
             >
-              {loading ? 'Mencari…' : 'Cari Campaign Serupa'}
+              <Search className="w-3.5 h-3.5" />
+              {loading ? 'Mencari' : 'Cari Campaign Serupa'}
             </button>
           </div>
 
           {/* Dimension checkboxes */}
-          <fieldset className="sc-fieldset">
-            <legend className="sc-fieldset__legend">
+          <fieldset className="space-y-2">
+            <legend className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
               Dimensi Kesamaan:
             </legend>
-            <div className="sc-checkbox-group">
+            <div className="flex flex-wrap gap-4">
               {DIMENSION_OPTIONS.map(({ value, label }) => (
-                <label key={value} className="sc-checkbox-label">
+                <label key={value} className="flex items-center gap-2 text-xs text-gray-700 cursor-pointer">
                   <input
                     type="checkbox"
-                    className="sc-checkbox"
+                    className="rounded border-gray-300 text-[#005E6A] focus:ring-[#005E6A]"
                     checked={dimensions.includes(value)}
                     onChange={() => handleDimensionChange(value)}
                     disabled={loading}
@@ -403,27 +455,20 @@ const SimilarCampaignPage: React.FC = () => {
 
         {/* ── Loading state ────────────────────────────────────────── */}
         {loading && (
-          <div className="sc-state-box" aria-busy="true" aria-label="Mencari">
-            <div className="sc-spinner" role="status" />
-            <p className="sc-state-box__text">Mencari campaign serupa…</p>
-          </div>
+          <LoadingState text="Mencari" />
         )}
 
         {/* ── Error state ──────────────────────────────────────────── */}
         {!loading && error && (
-          <div className="sc-state-box sc-state-box--error" role="alert">
-            <span className="sc-state-box__icon" aria-hidden="true">⚠️</span>
-            <p className="sc-state-box__title">Gagal Memuat Data</p>
-            <p className="sc-state-box__text">{error}</p>
-          </div>
+          <ErrorState message={error} />
         )}
 
         {/* ── No results state ─────────────────────────────────────── */}
         {!loading && !error && data !== null && isNoResults && (
-          <div className="sc-state-box" role="status">
-            <span className="sc-state-box__icon" aria-hidden="true">🔍</span>
-            <p className="sc-state-box__title">Tidak Ditemukan</p>
-            <p className="sc-state-box__text">
+          <div className="text-center py-12 text-gray-400" role="status">
+            <SearchX className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+            <p className="text-sm font-medium">Tidak Ditemukan</p>
+            <p className="text-xs mt-1">
               Tidak ada campaign serupa ditemukan. Coba perluas dimensi
               pencarian.
             </p>
@@ -436,44 +481,49 @@ const SimilarCampaignPage: React.FC = () => {
             {/* Learning summary box */}
             {data.learning_summary && (
               <div
-                className="sc-learning-summary"
+                className="bg-white border border-gray-200 rounded-xl shadow-sm p-4"
                 role="note"
                 aria-label="Learning summary"
               >
-                <p className="sc-learning-summary__heading">
-                  🏆 Learning Summary dari Campaign Teratas:
-                </p>
-                <ul className="sc-learning-summary__list">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-1.5 mb-3">
+                  <TrendingUp className="w-3.5 h-3.5" />
+                  Learning Summary dari Campaign Teratas
+                </h3>
+                <ul className="flex flex-col gap-1.5 text-xs text-slate-600">
                   <li>
                     Take Up Rate:{' '}
-                    <strong>
+                    <strong className="text-slate-700">
                       {data.learning_summary.take_up_rate_formatted}
                     </strong>
                   </li>
                   <li>
                     Segmen Teratas:{' '}
-                    <strong>{data.learning_summary.top_segment}</strong>
+                    <strong className="text-slate-700">
+                      {data.learning_summary.top_segment}
+                    </strong>
                   </li>
                   <li>
                     Wilayah Teratas:{' '}
-                    <strong>{data.learning_summary.top_region}</strong>
+                    <strong className="text-slate-700">
+                      {data.learning_summary.top_region}
+                    </strong>
                   </li>
                 </ul>
               </div>
             )}
 
             {/* Results count */}
-            <p className="sc-results-count">
+            <p className="text-xs text-slate-500">
               Ditemukan{' '}
-              <strong>{campaigns.length}</strong> campaign serupa
-              (diurutkan berdasarkan jumlah dimensi yang cocok)
+              <strong className="text-slate-700">{campaigns.length}</strong>{' '}
+              campaign serupa (diurutkan berdasarkan jumlah dimensi yang cocok)
             </p>
 
             {/* Results layout: list + detail side-by-side */}
-            <div className="sc-results-layout">
+            <div className="flex gap-4 items-start">
               {/* Campaign card list */}
               <div
-                className="sc-card-list"
+                className="flex flex-col gap-3 flex-1 min-w-0"
                 role="list"
                 aria-label="Daftar campaign serupa"
               >
@@ -492,7 +542,7 @@ const SimilarCampaignPage: React.FC = () => {
 
               {/* Side-by-side detail pane */}
               {selectedCampaign && (
-                <div className="sc-detail-pane">
+                <div className="w-80 flex-shrink-0 sticky top-4">
                   <ComparisonView campaign={selectedCampaign} />
                 </div>
               )}
@@ -500,7 +550,7 @@ const SimilarCampaignPage: React.FC = () => {
 
             {/* Hint when nothing is selected yet */}
             {!selectedCampaign && (
-              <p className="sc-hint">
+              <p className="text-xs text-slate-400 text-center">
                 Klik salah satu campaign di atas untuk melihat detail
                 perbandingan.
               </p>
@@ -510,10 +560,10 @@ const SimilarCampaignPage: React.FC = () => {
 
         {/* ── Initial / idle state ─────────────────────────────────── */}
         {!loading && !error && data === null && (
-          <div className="sc-state-box" role="status">
-            <span className="sc-state-box__icon" aria-hidden="true">🔍</span>
-            <p className="sc-state-box__title">Cari Campaign Serupa</p>
-            <p className="sc-state-box__text">
+          <div className="text-center py-12 text-gray-400" role="status">
+            <Search className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+            <p className="text-sm font-medium">Cari Campaign Serupa</p>
+            <p className="text-xs mt-1">
               Masukkan Campaign ID referensi, pilih dimensi kesamaan, lalu
               tekan <strong>Cari Campaign Serupa</strong>.
             </p>

@@ -7,7 +7,7 @@
  * overall percentage distribution and per-group take-up rate in the
  * tooltip.  Unavailable attributes are shown as grayed-out cards.
  *
- * Requirements: 5.1, 5.2, 5.3, 5.4, 5.5
+ * Requirements: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8
  */
 
 import React, { useState, useCallback } from 'react';
@@ -21,14 +21,20 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import {
+  Users,
+  Filter,
+  AlertCircle,
+  Info,
+} from 'lucide-react';
 import DashboardLayout from '../components/DashboardLayout';
+import { EmptyState, LoadingState, ErrorState } from '../components/StateComponents';
 import { api } from '../services/api';
 import type {
   CustomerCriteriaResponse,
   AttributeDistribution,
 } from '../types/api';
 import { useAuth } from '../hooks/useAuth';
-import './CustomerCriteriaPage.css';
 
 // ── Chart.js registration ─────────────────────────────────────────────────
 
@@ -38,7 +44,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 /**
  * Human-readable labels for each customer attribute key.
- * Requirements: 5.1 (demographic), 5.2 (financial)
+ * Requirements: 9.1 (demographic), 9.2 (financial)
  */
 const ATTR_LABELS: Record<string, string> = {
   customer_segment: 'Segmen Nasabah',
@@ -49,8 +55,8 @@ const ATTR_LABELS: Record<string, string> = {
 };
 
 /** Bar color for overall distribution. */
-const BAR_COLOR = 'rgba(49, 130, 206, 0.75)';
-const BAR_BORDER_COLOR = 'rgba(26, 54, 93, 1)';
+const BAR_COLOR = 'rgba(0, 94, 106, 0.75)';
+const BAR_BORDER_COLOR = 'rgba(0, 72, 82, 1)';
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 
@@ -103,7 +109,7 @@ const DistributionChart: React.FC<DistributionChartProps> = ({ dist }) => {
   };
 
   const options = {
-    indexAxis: 'y' as const,           // horizontal bar chart (Req 5.3)
+    indexAxis: 'y' as const,           // horizontal bar chart (Req 9.3)
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -114,7 +120,7 @@ const DistributionChart: React.FC<DistributionChartProps> = ({ dist }) => {
         callbacks: {
           /**
            * Tooltip shows count, percentage, take_up_count, take_up_percentage
-           * per group (Req 5.4).
+           * per group (Req 9.4).
            */
           label: (ctx: { dataIndex: number }) => {
             const item = dist.items[ctx.dataIndex];
@@ -154,11 +160,8 @@ const DistributionChart: React.FC<DistributionChartProps> = ({ dist }) => {
 
   return (
     <div
-      className={
-        tall
-          ? 'cc-dist-card__chart-wrap cc-dist-card__chart-wrap--tall'
-          : 'cc-dist-card__chart-wrap'
-      }
+      className="relative"
+      style={{ height: tall ? '340px' : '240px' }}
       aria-label={`Grafik distribusi ${humanizeAttr(dist.attribute)}`}
     >
       <Bar data={chartData} options={options} />
@@ -176,26 +179,41 @@ const DistributionCard: React.FC<DistributionCardProps> = ({ dist }) => {
   const title = humanizeAttr(dist.attribute);
 
   if (!dist.available) {
-    // Grayed-out card with unavailable reason (Req 5.5)
+    // Grayed-out card with unavailable reason (Req 9.5)
     return (
       <article
-        className="cc-dist-card cc-dist-card--unavailable"
+        className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden opacity-60"
         aria-label={`${title} — tidak tersedia`}
       >
-        <h3 className="cc-dist-card__title">{title}</h3>
-        <p className="cc-dist-card__unavailable-msg">
-          <span aria-hidden="true">⚠️</span>
-          {dist.unavailable_reason ??
-            `Data atribut '${dist.attribute}' tidak tersedia untuk campaign ini.`}
-        </p>
+        <div className="px-4 py-3 border-b border-gray-100">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+            {title}
+          </h3>
+        </div>
+        <div className="p-4">
+          <p className="flex items-center gap-2 text-xs text-gray-500">
+            <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+            {dist.unavailable_reason ??
+              `Data atribut '${dist.attribute}' tidak tersedia untuk campaign ini.`}
+          </p>
+        </div>
       </article>
     );
   }
 
   return (
-    <article className="cc-dist-card" aria-label={`Distribusi ${title}`}>
-      <h3 className="cc-dist-card__title">{title}</h3>
-      <DistributionChart dist={dist} />
+    <article
+      className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+      aria-label={`Distribusi ${title}`}
+    >
+      <div className="px-4 py-3 border-b border-gray-100">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+          {title}
+        </h3>
+      </div>
+      <div className="p-4">
+        <DistributionChart dist={dist} />
+      </div>
     </article>
   );
 };
@@ -252,59 +270,72 @@ const CustomerCriteriaPage: React.FC = () => {
 
   return (
     <DashboardLayout username={user?.username} onSignOut={signOut}>
-      {/* Spinner keyframe injected once */}
-      <style>{`@keyframes cc-spin { to { transform: rotate(360deg); } }`}</style>
+      <div className="flex flex-col gap-4">
 
-      <div className="cc-page">
-        {/* ── Page header ──────────────────────────────────────────── */}
-        <h1 className="cc-page__title">Kriteria Nasabah</h1>
-
-        {/* ── Campaign ID input ─────────────────────────────────────── */}
-        <div className="cc-input-card" role="search">
-          <label htmlFor="cc-campaign-input">Campaign ID:</label>
-          <input
-            id="cc-campaign-input"
-            type="text"
-            placeholder="Masukkan Campaign ID"
-            value={campaignId}
-            onChange={(e) => setCampaignId(e.target.value)}
-            onKeyDown={handleKeyDown}
-            aria-label="Campaign ID"
-            disabled={loading}
-          />
-          <button
-            type="button"
-            className="cc-btn-primary"
-            onClick={handleFetch}
-            disabled={!canFetch}
-            aria-label="Lihat kriteria nasabah"
-          >
-            {loading ? 'Memuat…' : 'Lihat Kriteria'}
-          </button>
+        {/* ── Campaign ID input card ─────────────────────────────────── */}
+        <div
+          className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+          role="search"
+        >
+          <div className="px-4 py-3 border-b border-gray-100 flex items-center gap-2">
+            <Filter className="w-4 h-4 text-[#005E6A]" />
+            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400">
+              Filter Campaign
+            </h2>
+          </div>
+          <div className="p-4 flex flex-wrap items-center gap-3">
+            <label
+              htmlFor="cc-campaign-input"
+              className="text-xs font-bold uppercase tracking-wider text-gray-600 whitespace-nowrap"
+            >
+              Campaign ID
+            </label>
+            <input
+              id="cc-campaign-input"
+              type="text"
+              placeholder="Masukkan Campaign ID"
+              value={campaignId}
+              onChange={(e) => setCampaignId(e.target.value)}
+              onKeyDown={handleKeyDown}
+              aria-label="Campaign ID"
+              disabled={loading}
+              className="w-64 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs disabled:opacity-50"
+            />
+            <button
+              type="button"
+              onClick={handleFetch}
+              disabled={!canFetch}
+              aria-label="Lihat kriteria nasabah"
+              className={
+                canFetch
+                  ? 'flex items-center gap-2 px-4 py-2 bg-[#005E6A] hover:bg-[#004852] text-white font-semibold rounded-lg text-xs transition-colors'
+                  : 'flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-500 font-semibold rounded-lg text-xs cursor-not-allowed'
+              }
+            >
+              <Users className="w-4 h-4" />
+              {loading ? 'Memuat' : 'Lihat Kriteria'}
+            </button>
+          </div>
         </div>
 
         {/* ── Loading state ─────────────────────────────────────────── */}
         {loading && (
           <div
-            className="cc-state-box"
+            className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
             aria-busy="true"
             aria-label="Memuat data"
           >
-            <div className="cc-spinner" role="status" />
-            <p className="cc-state-box__text">Memuat data kriteria nasabah…</p>
+            <LoadingState />
           </div>
         )}
 
         {/* ── Error state ───────────────────────────────────────────── */}
         {!loading && error && (
-          <div className="cc-state-box cc-state-box--error" role="alert">
-            <span className="cc-state-box__icon" aria-hidden="true">
-              ⚠️
-            </span>
-            <p className="cc-state-box__title">{error}</p>
-            <p className="cc-state-box__text">
-              Silakan periksa Campaign ID dan coba lagi.
-            </p>
+          <div
+            className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+            role="alert"
+          >
+            <ErrorState message={error} />
           </div>
         )}
 
@@ -313,26 +344,27 @@ const CustomerCriteriaPage: React.FC = () => {
           <>
             {/* Campaign name (if provided by backend) */}
             {data.campaign_name && (
-              <h2 className="cc-campaign-heading">
-                {data.campaign_name}
-                <span
-                  style={{ fontWeight: 400, color: '#718096', marginLeft: '0.5rem', fontSize: '0.9rem' }}
-                >
-                  ({data.campaign_id})
-                </span>
-              </h2>
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                <div className="px-4 py-3 flex items-center gap-3 flex-wrap">
+                  <Users className="w-4 h-4 text-[#005E6A] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-700">
+                    {data.campaign_name}
+                  </span>
+                  <span className="text-xs text-gray-400">
+                    ({data.campaign_id})
+                  </span>
+                </div>
+              </div>
             )}
 
-            {/* Partial data banner (Req 5.5) */}
+            {/* Partial data banner (Req 9.5) */}
             {data.partial_data_message && (
               <div
-                className="cc-banner-info"
+                className="flex items-start gap-2 bg-white border border-gray-200 rounded-xl shadow-sm px-4 py-3 text-xs text-slate-600"
                 role="note"
                 aria-label="Informasi data parsial"
               >
-                <span className="cc-banner-info__icon" aria-hidden="true">
-                  ℹ️
-                </span>
+                <Info className="w-4 h-4 text-[#005E6A] flex-shrink-0 mt-0.5" />
                 <span>{data.partial_data_message}</span>
               </div>
             )}
@@ -340,7 +372,7 @@ const CustomerCriteriaPage: React.FC = () => {
             {/* Distribution charts grid */}
             {data.distributions && data.distributions.length > 0 ? (
               <div
-                className="cc-dist-grid"
+                className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(420px,1fr))]"
                 aria-label="Distribusi karakteristik nasabah"
               >
                 {data.distributions.map((dist) => (
@@ -348,35 +380,29 @@ const CustomerCriteriaPage: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="cc-state-box" role="status">
-                <span className="cc-state-box__icon" aria-hidden="true">
-                  📭
-                </span>
-                <p className="cc-state-box__title">
-                  Tidak ada data yang tersedia
-                </p>
-                <p className="cc-state-box__text">
-                  Tidak ada data karakteristik nasabah untuk campaign ini.
-                </p>
+              <div
+                className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+                role="status"
+              >
+                <EmptyState />
               </div>
             )}
           </>
         )}
 
-        {/* ── Initial / empty prompt ────────────────────────────────── */}
+        {/* ── Initial prompt ────────────────────────────────────────── */}
         {!loading && !error && !data && (
-          <div className="cc-state-box" role="status">
-            <span className="cc-state-box__icon" aria-hidden="true">
-              👥
-            </span>
-            <p className="cc-state-box__title">Lihat Kriteria Nasabah</p>
-            <p className="cc-state-box__text">
-              Masukkan Campaign ID di atas, lalu tekan{' '}
-              <strong>Lihat Kriteria</strong> untuk melihat distribusi
-              demografis dan finansial nasabah.
-            </p>
+          <div
+            className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+            role="status"
+          >
+            <EmptyState
+              message="Lihat Kriteria Nasabah"
+              hint="Masukkan Campaign ID di atas, lalu tekan Lihat Kriteria untuk melihat distribusi demografis dan finansial nasabah."
+            />
           </div>
         )}
+
       </div>
     </DashboardLayout>
   );

@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
 interface AuthGuardProps {
@@ -32,24 +33,9 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
       <div
         role="status"
         aria-label="Loading"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh',
-        }}
+        className="flex justify-center items-center min-h-screen"
       >
-        <div
-          style={{
-            width: 40,
-            height: 40,
-            border: '4px solid #e0e0e0',
-            borderTopColor: '#1976d2',
-            borderRadius: '50%',
-            animation: 'spin 0.8s linear infinite',
-          }}
-        />
-        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        <Loader2 className="w-10 h-10 animate-spin text-[#005E6A]" />
       </div>
     );
   }

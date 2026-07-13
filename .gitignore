@@ -62,3 +62,11 @@ htmlcov/
 
 # ─── Nested repo (pushed separately) ─────────────────────────────────────────
 Hackathon-Dig-In/
+
+# ─── Local Dev Server exports ────────────────────────────────────────────────
+backend/local_server/exports/*.csv
+backend/local_server/exports/*.xlsx
+backend/local_server/exports/*.pdf
+
+# ─── Legacy HTML prototypes (contain API keys) ───────────────────────────────
+bni-campaign-engine - new/
