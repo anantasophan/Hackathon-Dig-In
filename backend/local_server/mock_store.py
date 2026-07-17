@@ -151,29 +151,46 @@ class MockDataStore:
         """
         results: list[dict[str, Any]] = []
 
+        # Case-insensitive comparison sets, built once per call. Filtering
+        # on free-text / mixed-case fields (flag_program, media_blasting,
+        # jenis_leads) would otherwise silently drop everything when the
+        # caller's casing does not exactly match the stored casing.
+        flag_program_lower = (
+            {v.lower() for v in flag_program} if flag_program is not None else None
+        )
+        media_blasting_lower = (
+            {v.lower() for v in media_blasting} if media_blasting is not None else None
+        )
+        jenis_leads_lower = (
+            {v.lower() for v in jenis_leads} if jenis_leads is not None else None
+        )
+
         for lead in self._leads:
             # --- campaign_id: exact match ---
             if campaign_id is not None and lead.get("campaign_id") != campaign_id:
                 continue
 
-            # --- flag_program: value in list ---
-            if flag_program is not None and lead.get("flag_program") not in flag_program:
-                continue
+            # --- flag_program: value in list (case-insensitive) ---
+            if flag_program_lower is not None:
+                value = str(lead.get("flag_program") or "").lower()
+                if value not in flag_program_lower:
+                    continue
 
-            # --- media_blasting: value in list ---
-            if (
-                media_blasting is not None
-                and lead.get("media_blasting") not in media_blasting
-            ):
-                continue
+            # --- media_blasting: value in list (case-insensitive) ---
+            if media_blasting_lower is not None:
+                value = str(lead.get("media_blasting") or "").lower()
+                if value not in media_blasting_lower:
+                    continue
 
             # --- wilayah: value in list (int comparison) ---
             if wilayah is not None and lead.get("wilayah") not in wilayah:
                 continue
 
-            # --- jenis_leads: value in list ---
-            if jenis_leads is not None and lead.get("jenis_leads") not in jenis_leads:
-                continue
+            # --- jenis_leads: value in list (case-insensitive) ---
+            if jenis_leads_lower is not None:
+                value = str(lead.get("jenis_leads") or "").lower()
+                if value not in jenis_leads_lower:
+                    continue
 
             # --- date range: filter on periode_start (inclusive) ---
             periode = lead.get("periode_start")

@@ -15,18 +15,42 @@ import { FilterState, FilterChangeHandler } from '../types/filters';
 
 // ── Constants ────────────────────────────────────────────────────
 
+/** All flag_program values actually present in the current dataset (C001-C009). */
 const FLAG_PROGRAM_OPTIONS: string[] = [
-  'PROGRAM BIAYA ADMIN',
   'PROGRAM QRIS',
+  'PROGRAM BIAYA ADMIN',
+  'PROGRAM TAPENAS',
+  'PROGRAM LIFEGOALS',
 ];
 
+/** All media_blasting values actually present in the current dataset. */
 const MEDIA_BLASTING_OPTIONS: string[] = [
   'wa',
-  'digisales',
   'telesales',
   'email',
-  'push notif',
-  'sms',
+  'digisales',
+];
+
+/**
+ * All jenis_leads values actually present in the current dataset.
+ * Free-text entry was replaced with a fixed checkbox list because the
+ * backend match is case-insensitive but still exact — letting users type
+ * arbitrary text made it easy to enter values that silently matched
+ * nothing (e.g. "Migrasi" alone does not match "MIGRASI BAU").
+ */
+const JENIS_LEADS_OPTIONS: string[] = [
+  'MIGRASI BAU',
+  'MIGRASI BAU 2',
+  'MIGRASI - TAMBAH 87K',
+  'MIGRASI - CASHOUT',
+  'MIGRASI - BO',
+  'Balrun - Affluent',
+  'Balrun- Payroll',
+  'Balrun- BO',
+  'Lifegoals - Balrun Payroll',
+  'Akuisisi',
+  'Migrasi',
+  'Retensi',
 ];
 
 /** Region codes 1–17, displayed as "Wilayah N". */
@@ -186,14 +210,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
     []
   );
 
-  /** Parses the jenis_leads text input (comma-separated) into a string array. */
   const handleJenisCleadsChange = useCallback(
-    (raw: string) => {
-      const parsed = raw
-        .split(',')
-        .map((s) => s.trim())
-        .filter((s) => s.length > 0);
-      setFilters((prev) => ({ ...prev, jenisCleads: parsed }));
+    (value: string, checked: boolean) => {
+      setFilters((prev) => ({
+        ...prev,
+        jenisCleads: checked
+          ? [...prev.jenisCleads, value]
+          : prev.jenisCleads.filter((v) => v !== value),
+      }));
     },
     []
   );
@@ -207,11 +231,6 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
     setFilters(defaultFilters);
     onFilterChange(defaultFilters);
   }, [onFilterChange]);
-
-  // ── Derived display values ───────────────────────────────────
-
-  /** Re-joins jenisCleads array for the controlled text input. */
-  const jenisCleadsText = filters.jenisCleads.join(', ');
 
   // ── Render ───────────────────────────────────────────────────
 
@@ -287,23 +306,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
           />
 
           {/* Jenis Leads */}
-          <fieldset className="space-y-2">
-            <legend className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Jenis Leads (Sub-Produk)</legend>
-            <label
-              htmlFor="filter-jenis-leads"
-              className="text-xs text-gray-600 font-medium"
-            >
-              Masukkan nilai, pisahkan dengan koma
-            </label>
-            <input
-              type="text"
-              id="filter-jenis-leads"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005E6A] bg-white text-xs"
-              placeholder="Contoh: Migrasi, Baru, Reaktivasi"
-              value={jenisCleadsText}
-              onChange={(e) => handleJenisCleadsChange(e.target.value)}
-            />
-          </fieldset>
+          <CheckboxGroup<string>
+            legend="Jenis Leads (Sub-Produk)"
+            options={JENIS_LEADS_OPTIONS}
+            selected={filters.jenisCleads}
+            getLabel={(v) => v}
+            getId={(v) => `filter-jl-${v.replace(/\s+/g, '-').toLowerCase()}`}
+            onChange={handleJenisCleadsChange}
+          />
 
           {/* Media Blasting */}
           <CheckboxGroup<string>

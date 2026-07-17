@@ -3,7 +3,10 @@
     "campaign_id": "C001",
     "similar_campaign_id": "C003",
     "campaign_name": "Digisales QRIS Nasabah Mass",
-    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "matching_dimensions": [
+      "flag_program",
+      "jenis_leads"
+    ],
     "dimension_count": 2,
     "similarity_score": 0.83,
     "take_up_rate": 20.69,
@@ -14,7 +17,9 @@
     "campaign_id": "C001",
     "similar_campaign_id": "C004",
     "campaign_name": "WA Blast Biaya Admin Emerald",
-    "matching_dimensions": ["media_blasting"],
+    "matching_dimensions": [
+      "media_blasting"
+    ],
     "dimension_count": 1,
     "similarity_score": 0.55,
     "take_up_rate": 20.0,
@@ -25,9 +30,11 @@
     "campaign_id": "C001",
     "similar_campaign_id": "C005",
     "campaign_name": "Email QRIS Nasabah Affluent",
-    "matching_dimensions": ["flag_program"],
+    "matching_dimensions": [
+      "flag_program"
+    ],
     "dimension_count": 1,
-    "similarity_score": 0.60,
+    "similarity_score": 0.6,
     "take_up_rate": 26.67,
     "total_leads": 30,
     "total_take_up": 8
@@ -36,7 +43,10 @@
     "campaign_id": "C002",
     "similar_campaign_id": "C004",
     "campaign_name": "WA Blast Biaya Admin Emerald",
-    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "matching_dimensions": [
+      "flag_program",
+      "jenis_leads"
+    ],
     "dimension_count": 2,
     "similarity_score": 0.87,
     "take_up_rate": 20.0,
@@ -46,8 +56,11 @@
   {
     "campaign_id": "C003",
     "similar_campaign_id": "C001",
-    "campaign_name": "Cashback QRIS Agustus 2024",
-    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "campaign_name": "Cashback QRIS Batch 1 2026",
+    "matching_dimensions": [
+      "flag_program",
+      "jenis_leads"
+    ],
     "dimension_count": 2,
     "similarity_score": 0.83,
     "take_up_rate": 20.0,
@@ -58,7 +71,9 @@
     "campaign_id": "C003",
     "similar_campaign_id": "C005",
     "campaign_name": "Email QRIS Nasabah Affluent",
-    "matching_dimensions": ["flag_program"],
+    "matching_dimensions": [
+      "flag_program"
+    ],
     "dimension_count": 1,
     "similarity_score": 0.58,
     "take_up_rate": 26.67,
@@ -68,8 +83,10 @@
   {
     "campaign_id": "C004",
     "similar_campaign_id": "C001",
-    "campaign_name": "Cashback QRIS Agustus 2024",
-    "matching_dimensions": ["media_blasting"],
+    "campaign_name": "Cashback QRIS Batch 1 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
     "dimension_count": 1,
     "similarity_score": 0.55,
     "take_up_rate": 20.0,
@@ -79,8 +96,11 @@
   {
     "campaign_id": "C004",
     "similar_campaign_id": "C002",
-    "campaign_name": "Migrasi Biaya Admin Q3 2024",
-    "matching_dimensions": ["flag_program", "jenis_leads"],
+    "campaign_name": "Migrasi Biaya Admin Batch 1 2026",
+    "matching_dimensions": [
+      "flag_program",
+      "jenis_leads"
+    ],
     "dimension_count": 2,
     "similarity_score": 0.87,
     "take_up_rate": 23.33,
@@ -90,10 +110,12 @@
   {
     "campaign_id": "C005",
     "similar_campaign_id": "C001",
-    "campaign_name": "Cashback QRIS Agustus 2024",
-    "matching_dimensions": ["flag_program"],
+    "campaign_name": "Cashback QRIS Batch 1 2026",
+    "matching_dimensions": [
+      "flag_program"
+    ],
     "dimension_count": 1,
-    "similarity_score": 0.60,
+    "similarity_score": 0.6,
     "take_up_rate": 20.0,
     "total_leads": 30,
     "total_take_up": 6
@@ -102,11 +124,171 @@
     "campaign_id": "C005",
     "similar_campaign_id": "C003",
     "campaign_name": "Digisales QRIS Nasabah Mass",
-    "matching_dimensions": ["flag_program"],
+    "matching_dimensions": [
+      "flag_program"
+    ],
     "dimension_count": 1,
     "similarity_score": 0.58,
     "take_up_rate": 20.69,
     "total_leads": 29,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C006",
+    "similar_campaign_id": "C007",
+    "campaign_name": "E-Wallet / Billpayment 2026",
+    "matching_dimensions": [
+      "jenis_leads",
+      "media_blasting"
+    ],
+    "dimension_count": 2,
+    "similarity_score": 0.67,
+    "take_up_rate": 2.5,
+    "total_leads": 800,
+    "total_take_up": 20
+  },
+  {
+    "campaign_id": "C006",
+    "similar_campaign_id": "C008",
+    "campaign_name": "Tapenas Emas 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 0.75,
+    "total_leads": 800,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C006",
+    "similar_campaign_id": "C009",
+    "campaign_name": "Lifegoals Balrun Payroll Jan 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 80.77,
+    "total_leads": 104,
+    "total_take_up": 84
+  },
+  {
+    "campaign_id": "C007",
+    "similar_campaign_id": "C006",
+    "campaign_name": "Cashback QRIS 2026",
+    "matching_dimensions": [
+      "jenis_leads",
+      "media_blasting"
+    ],
+    "dimension_count": 2,
+    "similarity_score": 0.67,
+    "take_up_rate": 0.62,
+    "total_leads": 800,
+    "total_take_up": 5
+  },
+  {
+    "campaign_id": "C007",
+    "similar_campaign_id": "C008",
+    "campaign_name": "Tapenas Emas 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 0.75,
+    "total_leads": 800,
+    "total_take_up": 6
+  },
+  {
+    "campaign_id": "C007",
+    "similar_campaign_id": "C009",
+    "campaign_name": "Lifegoals Balrun Payroll Jan 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 80.77,
+    "total_leads": 104,
+    "total_take_up": 84
+  },
+  {
+    "campaign_id": "C008",
+    "similar_campaign_id": "C006",
+    "campaign_name": "Cashback QRIS 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 0.62,
+    "total_leads": 800,
+    "total_take_up": 5
+  },
+  {
+    "campaign_id": "C008",
+    "similar_campaign_id": "C007",
+    "campaign_name": "E-Wallet / Billpayment 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 2.5,
+    "total_leads": 800,
+    "total_take_up": 20
+  },
+  {
+    "campaign_id": "C008",
+    "similar_campaign_id": "C009",
+    "campaign_name": "Lifegoals Balrun Payroll Jan 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 80.77,
+    "total_leads": 104,
+    "total_take_up": 84
+  },
+  {
+    "campaign_id": "C009",
+    "similar_campaign_id": "C006",
+    "campaign_name": "Cashback QRIS 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 0.62,
+    "total_leads": 800,
+    "total_take_up": 5
+  },
+  {
+    "campaign_id": "C009",
+    "similar_campaign_id": "C007",
+    "campaign_name": "E-Wallet / Billpayment 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 2.5,
+    "total_leads": 800,
+    "total_take_up": 20
+  },
+  {
+    "campaign_id": "C009",
+    "similar_campaign_id": "C008",
+    "campaign_name": "Tapenas Emas 2026",
+    "matching_dimensions": [
+      "media_blasting"
+    ],
+    "dimension_count": 1,
+    "similarity_score": 0.33,
+    "take_up_rate": 0.75,
+    "total_leads": 800,
     "total_take_up": 6
   }
 ]

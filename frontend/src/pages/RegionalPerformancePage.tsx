@@ -49,6 +49,8 @@ const FLAG_PROGRAM_OPTIONS: { value: string; label: string }[] = [
   { value: '', label: 'Semua Program' },
   { value: 'PROGRAM QRIS', label: 'PROGRAM QRIS' },
   { value: 'PROGRAM BIAYA ADMIN', label: 'PROGRAM BIAYA ADMIN' },
+  { value: 'PROGRAM TAPENAS', label: 'PROGRAM TAPENAS' },
+  { value: 'PROGRAM LIFEGOALS', label: 'PROGRAM LIFEGOALS' },
 ];
 
 // ── Badge helper ──────────────────────────────────────────────────────────

@@ -70,3 +70,10 @@ backend/local_server/exports/*.pdf
 
 # ─── Legacy HTML prototypes (contain API keys) ───────────────────────────────
 bni-campaign-engine - new/
+
+# ─── Raw dummy data (large files, contains masked customer data) ────────────
+# Source Excel files + full JSON conversions exceed GitHub's 100MB limit and
+# should not be committed. The MAPPED/sampled output that actually feeds the
+# local dev server lives in backend/local_server/mock_data/ and IS tracked.
+Data Dummy/
+~$*.xlsx

@@ -105,12 +105,34 @@ export class ApiServiceUnavailableError extends Error {
 // Axios instance
 // ---------------------------------------------------------------------------
 
+/**
+ * Serializes query params for the backend's comma-separated list format
+ * (e.g. `flag_program=A,B`), which is what the FastAPI/Lambda handlers
+ * expect. Axios's default array serialization produces `flag_program[]=A`
+ * repeated per value, which the backend does not recognise as the same
+ * parameter name — filters would silently be ignored.
+ */
+function serializeParams(params: Record<string, unknown>): string {
+  const parts: string[] = [];
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null) continue;
+    if (Array.isArray(value)) {
+      if (value.length === 0) continue;
+      parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(value.join(','))}`);
+    } else {
+      parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`);
+    }
+  }
+  return parts.join('&');
+}
+
 const apiClient: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: CLIENT_TIMEOUT_MS,
   headers: {
     'Content-Type': 'application/json',
   },
+  paramsSerializer: serializeParams,
 });
 
 // ---------------------------------------------------------------------------

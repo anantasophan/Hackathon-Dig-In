@@ -1,22 +1,22 @@
 [
   {
     "campaign_id": "C001",
-    "nama_program": "Cashback QRIS Agustus 2024",
+    "nama_program": "Cashback QRIS Batch 1 2026",
     "flag_program": "PROGRAM QRIS",
     "jenis_leads": "Akuisisi",
     "media_blasting": "wa",
-    "periode_start": "2024-08-01",
-    "periode_end": "2024-08-31",
+    "periode_start": "2026-02-01",
+    "periode_end": "2026-03-03",
     "duration_days": 30
   },
   {
     "campaign_id": "C002",
-    "nama_program": "Migrasi Biaya Admin Q3 2024",
+    "nama_program": "Migrasi Biaya Admin Batch 1 2026",
     "flag_program": "PROGRAM BIAYA ADMIN",
     "jenis_leads": "Migrasi",
     "media_blasting": "telesales",
-    "periode_start": "2024-07-01",
-    "periode_end": "2024-09-30",
+    "periode_start": "2026-01-01",
+    "periode_end": "2026-04-02",
     "duration_days": 91
   },
   {
@@ -25,8 +25,8 @@
     "flag_program": "PROGRAM QRIS",
     "jenis_leads": "Akuisisi",
     "media_blasting": "digisales",
-    "periode_start": "2024-09-01",
-    "periode_end": "2024-09-30",
+    "periode_start": "2026-03-04",
+    "periode_end": "2026-04-02",
     "duration_days": 29
   },
   {
@@ -35,8 +35,8 @@
     "flag_program": "PROGRAM BIAYA ADMIN",
     "jenis_leads": "Migrasi",
     "media_blasting": "wa",
-    "periode_start": "2024-10-01",
-    "periode_end": "2024-10-31",
+    "periode_start": "2026-04-03",
+    "periode_end": "2026-05-03",
     "duration_days": 30
   },
   {
@@ -45,8 +45,64 @@
     "flag_program": "PROGRAM QRIS",
     "jenis_leads": "Retensi",
     "media_blasting": "email",
-    "periode_start": "2024-11-01",
-    "periode_end": "2024-11-30",
+    "periode_start": "2026-05-04",
+    "periode_end": "2026-06-02",
     "duration_days": 29
+  },
+  {
+    "campaign_id": "C006",
+    "nama_program": "Cashback QRIS 2026",
+    "flag_program": "PROGRAM QRIS",
+    "jenis_leads": "Migrasi",
+    "media_blasting": "wa",
+    "periode_start": "2026-04-17",
+    "periode_end": "2026-06-05",
+    "duration_days": 49,
+    "total_leads": 800,
+    "total_take_up": 5,
+    "take_up_rate": 0.62,
+    "total_transaction_value": 262800.0
+  },
+  {
+    "campaign_id": "C007",
+    "nama_program": "E-Wallet / Billpayment 2026",
+    "flag_program": "PROGRAM BIAYA ADMIN",
+    "jenis_leads": "Migrasi",
+    "media_blasting": "wa",
+    "periode_start": "2026-04-13",
+    "periode_end": "2026-06-05",
+    "duration_days": 53,
+    "total_leads": 800,
+    "total_take_up": 20,
+    "take_up_rate": 2.5,
+    "total_transaction_value": 1495172.0
+  },
+  {
+    "campaign_id": "C008",
+    "nama_program": "Tapenas Emas 2026",
+    "flag_program": "PROGRAM TAPENAS",
+    "jenis_leads": "Akuisisi",
+    "media_blasting": "wa",
+    "periode_start": "2026-04-13",
+    "periode_end": "2026-04-13",
+    "duration_days": 0,
+    "total_leads": 800,
+    "total_take_up": 6,
+    "take_up_rate": 0.75,
+    "total_transaction_value": 2410900000.0
+  },
+  {
+    "campaign_id": "C009",
+    "nama_program": "Lifegoals Balrun Payroll Jan 2026",
+    "flag_program": "PROGRAM LIFEGOALS",
+    "jenis_leads": "Lifegoals - Balrun Payroll",
+    "media_blasting": "wa",
+    "periode_start": "2026-01-19",
+    "periode_end": "2026-01-19",
+    "duration_days": 0,
+    "total_leads": 104,
+    "total_take_up": 84,
+    "take_up_rate": 80.77,
+    "total_transaction_value": 682562300.0
   }
 ]

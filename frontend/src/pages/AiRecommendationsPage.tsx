@@ -15,6 +15,8 @@ import {
   Clock,
   Radio,
 } from 'lucide-react';
+import DashboardLayout from '../components/DashboardLayout';
+import { useAuth } from '../hooks/useAuth';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -58,11 +60,15 @@ interface RecommendationResponse {
 // ---------------------------------------------------------------------------
 
 const CAMPAIGN_OPTIONS = [
-  { id: 'C001', label: 'C001 — Cashback QRIS Agustus 2024' },
-  { id: 'C002', label: 'C002 — Migrasi Biaya Admin Q3 2024' },
+  { id: 'C001', label: 'C001 — Cashback QRIS Batch 1 2026' },
+  { id: 'C002', label: 'C002 — Migrasi Biaya Admin Batch 1 2026' },
   { id: 'C003', label: 'C003 — Digisales QRIS Nasabah Mass' },
   { id: 'C004', label: 'C004 — WA Blast Biaya Admin Emerald' },
   { id: 'C005', label: 'C005 — Email QRIS Nasabah Affluent' },
+  { id: 'C006', label: 'C006 — Cashback QRIS 2026' },
+  { id: 'C007', label: 'C007 — E-Wallet / Billpayment 2026' },
+  { id: 'C008', label: 'C008 — Tapenas Emas 2026' },
+  { id: 'C009', label: 'C009 — Lifegoals Balrun Payroll Jan 2026' },
 ];
 
 const GOAL_OPTIONS = [
@@ -192,6 +198,7 @@ const RecommendationCard: React.FC<{ rec: Recommendation; index: number }> = ({ 
 // ---------------------------------------------------------------------------
 
 const AiRecommendationsPage: React.FC = () => {
+  const { user, signOut } = useAuth();
   const [selectedCampaign, setSelectedCampaign] = useState('C001');
   const [selectedGoal, setSelectedGoal] = useState('maximize_take_up_rate');
   const [loading, setLoading] = useState(false);
@@ -221,6 +228,7 @@ const AiRecommendationsPage: React.FC = () => {
   const summary = result?.campaign_summary;
 
   return (
+    <DashboardLayout username={user?.username} onSignOut={signOut}>
     <div className="flex flex-col gap-4">
 
       {/* Config panel */}
@@ -376,6 +384,7 @@ const AiRecommendationsPage: React.FC = () => {
         </div>
       )}
     </div>
+    </DashboardLayout>
   );
 };
 

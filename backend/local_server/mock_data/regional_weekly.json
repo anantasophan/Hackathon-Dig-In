@@ -1,148 +1,2604 @@
 {
   "C001": [
-    { "wilayah": 1, "week_start": "2024-08-01", "leads_count": 3, "take_up_count": 1, "take_up_rate": 33.33 },
-    { "wilayah": 1, "week_start": "2024-08-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-08-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-08-22", "leads_count": 3, "take_up_count": 1, "take_up_rate": 33.33 },
-    { "wilayah": 3, "week_start": "2024-08-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 3, "week_start": "2024-08-08", "leads_count": 3, "take_up_count": 1, "take_up_rate": 33.33 },
-    { "wilayah": 3, "week_start": "2024-08-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-08-22", "leads_count": 3, "take_up_count": 1, "take_up_rate": 33.33 },
-    { "wilayah": 5, "week_start": "2024-08-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-08-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-08-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-08-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-08-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-08-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-08-15", "leads_count": 1, "take_up_count": 1, "take_up_rate": 100.0 },
-    { "wilayah": 7, "week_start": "2024-08-22", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 9, "week_start": "2024-08-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-08-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-08-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-08-22", "leads_count": 3, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-08-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-08-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-08-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-08-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 }
+    {
+      "wilayah": 1,
+      "week_start": "2026-02-01",
+      "leads_count": 3,
+      "take_up_count": 1,
+      "take_up_rate": 33.33
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-02-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-02-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-02-22",
+      "leads_count": 3,
+      "take_up_count": 1,
+      "take_up_rate": 33.33
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-02-01",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-02-08",
+      "leads_count": 3,
+      "take_up_count": 1,
+      "take_up_rate": 33.33
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-02-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-02-22",
+      "leads_count": 3,
+      "take_up_count": 1,
+      "take_up_rate": 33.33
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-02-01",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-02-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-02-15",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-02-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-02-01",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-02-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-02-15",
+      "leads_count": 1,
+      "take_up_count": 1,
+      "take_up_rate": 100.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-02-22",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-02-01",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-02-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-02-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-02-22",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-02-01",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-02-08",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-02-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-02-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    }
   ],
   "C002": [
-    { "wilayah": 1, "week_start": "2024-07-01", "leads_count": 3, "take_up_count": 1, "take_up_rate": 33.33 },
-    { "wilayah": 1, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-07-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 3, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-07-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-07-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-07-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 9, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 9, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-07-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-07-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-07-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-07-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-07-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 }
+    {
+      "wilayah": 1,
+      "week_start": "2026-01-01",
+      "leads_count": 3,
+      "take_up_count": 1,
+      "take_up_rate": 33.33
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-01-01",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-01-01",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-01-01",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-01-01",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-01-01",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-01-01",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-01-08",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-01-15",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-01-22",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    }
   ],
   "C003": [
-    { "wilayah": 1, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 1, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 3, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 3, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 7, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 9, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-09-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-09-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 13, "week_start": "2024-09-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-09-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 }
+    {
+      "wilayah": 1,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-03-04",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-03-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-03-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-03-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    }
   ],
   "C004": [
-    { "wilayah": 1, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 1, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 3, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 7, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 7, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-10-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-10-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-10-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 13, "week_start": "2024-10-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 }
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-03",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-10",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-17",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-24",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    }
   ],
   "C005": [
-    { "wilayah": 1, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 1, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 1, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 1, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 3, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 3, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 5, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 5, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 7, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 7, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 9, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 9, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 1, "take_up_rate": 50.0 },
-    { "wilayah": 11, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 11, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-11-01", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-11-08", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-11-15", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 },
-    { "wilayah": 13, "week_start": "2024-11-22", "leads_count": 2, "take_up_count": 0, "take_up_rate": 0.0 }
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-04",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0
+    }
+  ],
+  "C006": [
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-13",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-06-01",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-04-13",
+      "leads_count": 17,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-11",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-18",
+      "leads_count": 19,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-25",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-06-01",
+      "leads_count": 45,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-13",
+      "leads_count": 18,
+      "take_up_count": 1,
+      "take_up_rate": 5.56,
+      "avg_transaction_value": 100000.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-11",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-18",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-25",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-06-01",
+      "leads_count": 19,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-04-13",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-05-11",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-05-25",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-06-01",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-13",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-11",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-18",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-25",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-06-01",
+      "leads_count": 15,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-04-13",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-05-11",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-05-25",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-06-01",
+      "leads_count": 16,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-13",
+      "leads_count": 15,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-11",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-18",
+      "leads_count": 25,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-25",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-06-01",
+      "leads_count": 59,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-04-13",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-05-11",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-05-25",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-06-01",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-13",
+      "leads_count": 21,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-11",
+      "leads_count": 20,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-18",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-25",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-06-01",
+      "leads_count": 63,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-04-13",
+      "leads_count": 13,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-05-11",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-05-18",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-05-25",
+      "leads_count": 8,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-06-01",
+      "leads_count": 24,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-13",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-11",
+      "leads_count": 7,
+      "take_up_count": 1,
+      "take_up_rate": 14.29,
+      "avg_transaction_value": 22000.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-18",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-25",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-06-01",
+      "leads_count": 29,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-04-13",
+      "leads_count": 9,
+      "take_up_count": 1,
+      "take_up_rate": 11.11,
+      "avg_transaction_value": 59000.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-11",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-25",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-06-01",
+      "leads_count": 16,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-13",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-25",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-06-01",
+      "leads_count": 8,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-04-13",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-05-25",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-06-01",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-04-13",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-05-11",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 1,
+      "take_up_rate": 50.0,
+      "avg_transaction_value": 26000.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-06-01",
+      "leads_count": 12,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-04-13",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-05-11",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-05-18",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-06-01",
+      "leads_count": 12,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-04-13",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-05-11",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-05-25",
+      "leads_count": 4,
+      "take_up_count": 1,
+      "take_up_rate": 25.0,
+      "avg_transaction_value": 55800.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-06-01",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    }
+  ],
+  "C007": [
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-13",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-04",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-05-25",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 1,
+      "week_start": "2026-06-01",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-04-13",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-04",
+      "leads_count": 9,
+      "take_up_count": 1,
+      "take_up_rate": 11.11,
+      "avg_transaction_value": 252580.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-11",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-18",
+      "leads_count": 19,
+      "take_up_count": 1,
+      "take_up_rate": 5.26,
+      "avg_transaction_value": 35000.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-05-25",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-06-01",
+      "leads_count": 40,
+      "take_up_count": 1,
+      "take_up_rate": 2.5,
+      "avg_transaction_value": 13000.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-13",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-04",
+      "leads_count": 13,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-18",
+      "leads_count": 6,
+      "take_up_count": 1,
+      "take_up_rate": 16.67,
+      "avg_transaction_value": 55000.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-05-25",
+      "leads_count": 5,
+      "take_up_count": 1,
+      "take_up_rate": 20.0,
+      "avg_transaction_value": 310900.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-06-01",
+      "leads_count": 20,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-04-13",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-05-04",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-05-25",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-06-01",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-13",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-04",
+      "leads_count": 7,
+      "take_up_count": 1,
+      "take_up_rate": 14.29,
+      "avg_transaction_value": 80781.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-18",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-05-25",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-06-01",
+      "leads_count": 24,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-04-13",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-05-04",
+      "leads_count": 8,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-05-18",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-05-25",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-06-01",
+      "leads_count": 15,
+      "take_up_count": 1,
+      "take_up_rate": 6.67,
+      "avg_transaction_value": 39500.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-13",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-04",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-11",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-18",
+      "leads_count": 29,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-05-25",
+      "leads_count": 12,
+      "take_up_count": 1,
+      "take_up_rate": 8.33,
+      "avg_transaction_value": 60000.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-06-01",
+      "leads_count": 66,
+      "take_up_count": 1,
+      "take_up_rate": 1.52,
+      "avg_transaction_value": 10000.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-04-13",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-05-04",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-05-18",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-05-25",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-06-01",
+      "leads_count": 12,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-13",
+      "leads_count": 8,
+      "take_up_count": 1,
+      "take_up_rate": 12.5,
+      "avg_transaction_value": 65000.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-04",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-18",
+      "leads_count": 21,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-05-25",
+      "leads_count": 21,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-06-01",
+      "leads_count": 34,
+      "take_up_count": 2,
+      "take_up_rate": 5.88,
+      "avg_transaction_value": 51500.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-04-13",
+      "leads_count": 8,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-05-04",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-05-18",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-05-25",
+      "leads_count": 13,
+      "take_up_count": 1,
+      "take_up_rate": 7.69,
+      "avg_transaction_value": 33000.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-06-01",
+      "leads_count": 17,
+      "take_up_count": 1,
+      "take_up_rate": 5.88,
+      "avg_transaction_value": 12000.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-13",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-04",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-18",
+      "leads_count": 17,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-05-25",
+      "leads_count": 16,
+      "take_up_count": 1,
+      "take_up_rate": 6.25,
+      "avg_transaction_value": 18500.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-06-01",
+      "leads_count": 28,
+      "take_up_count": 1,
+      "take_up_rate": 3.57,
+      "avg_transaction_value": 1.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-04-13",
+      "leads_count": 10,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-04",
+      "leads_count": 12,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-11",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-05-25",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-06-01",
+      "leads_count": 12,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-13",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-04",
+      "leads_count": 4,
+      "take_up_count": 1,
+      "take_up_rate": 25.0,
+      "avg_transaction_value": 100000.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-11",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-05-25",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-06-01",
+      "leads_count": 12,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-05-04",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-05-25",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-06-01",
+      "leads_count": 13,
+      "take_up_count": 2,
+      "take_up_rate": 15.38,
+      "avg_transaction_value": 140955.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-04-13",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-05-04",
+      "leads_count": 6,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-05-18",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-05-25",
+      "leads_count": 5,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-06-01",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-04-13",
+      "leads_count": 4,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-05-04",
+      "leads_count": 7,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-05-18",
+      "leads_count": 2,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-05-25",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-06-01",
+      "leads_count": 13,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-04-13",
+      "leads_count": 3,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-05-04",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-05-18",
+      "leads_count": 1,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-05-25",
+      "leads_count": 4,
+      "take_up_count": 1,
+      "take_up_rate": 25.0,
+      "avg_transaction_value": 25000.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-06-01",
+      "leads_count": 9,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    }
+  ],
+  "C008": [
+    {
+      "wilayah": 1,
+      "week_start": "2026-04-13",
+      "leads_count": 11,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-04-13",
+      "leads_count": 98,
+      "take_up_count": 1,
+      "take_up_rate": 1.02,
+      "avg_transaction_value": 210100000.0
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-04-13",
+      "leads_count": 72,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-04-13",
+      "leads_count": 16,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-04-13",
+      "leads_count": 51,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-04-13",
+      "leads_count": 42,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-04-13",
+      "leads_count": 77,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-04-13",
+      "leads_count": 33,
+      "take_up_count": 1,
+      "take_up_rate": 3.03,
+      "avg_transaction_value": 700300000.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-04-13",
+      "leads_count": 93,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-04-13",
+      "leads_count": 45,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-04-13",
+      "leads_count": 67,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-04-13",
+      "leads_count": 42,
+      "take_up_count": 1,
+      "take_up_rate": 2.38,
+      "avg_transaction_value": 300100000.0
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-04-13",
+      "leads_count": 14,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-04-13",
+      "leads_count": 17,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-04-13",
+      "leads_count": 28,
+      "take_up_count": 1,
+      "take_up_rate": 3.57,
+      "avg_transaction_value": 150200000.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-04-13",
+      "leads_count": 44,
+      "take_up_count": 0,
+      "take_up_rate": 0.0,
+      "avg_transaction_value": 0.0
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-04-13",
+      "leads_count": 50,
+      "take_up_count": 2,
+      "take_up_rate": 4.0,
+      "avg_transaction_value": 525100000.0
+    }
+  ],
+  "C009": [
+    {
+      "wilayah": 1,
+      "week_start": "2026-01-19",
+      "leads_count": 3,
+      "take_up_count": 2,
+      "take_up_rate": 66.67,
+      "avg_transaction_value": 50025000.0
+    },
+    {
+      "wilayah": 2,
+      "week_start": "2026-01-19",
+      "leads_count": 8,
+      "take_up_count": 7,
+      "take_up_rate": 87.5,
+      "avg_transaction_value": 3821428.57
+    },
+    {
+      "wilayah": 3,
+      "week_start": "2026-01-19",
+      "leads_count": 10,
+      "take_up_count": 7,
+      "take_up_rate": 70.0,
+      "avg_transaction_value": 3664285.71
+    },
+    {
+      "wilayah": 4,
+      "week_start": "2026-01-19",
+      "leads_count": 6,
+      "take_up_count": 3,
+      "take_up_rate": 50.0,
+      "avg_transaction_value": 66666.67
+    },
+    {
+      "wilayah": 5,
+      "week_start": "2026-01-19",
+      "leads_count": 8,
+      "take_up_count": 6,
+      "take_up_rate": 75.0,
+      "avg_transaction_value": 28002500.0
+    },
+    {
+      "wilayah": 6,
+      "week_start": "2026-01-19",
+      "leads_count": 5,
+      "take_up_count": 4,
+      "take_up_rate": 80.0,
+      "avg_transaction_value": 2650000.0
+    },
+    {
+      "wilayah": 7,
+      "week_start": "2026-01-19",
+      "leads_count": 5,
+      "take_up_count": 5,
+      "take_up_rate": 100.0,
+      "avg_transaction_value": 110000.0
+    },
+    {
+      "wilayah": 8,
+      "week_start": "2026-01-19",
+      "leads_count": 5,
+      "take_up_count": 4,
+      "take_up_rate": 80.0,
+      "avg_transaction_value": 2975000.0
+    },
+    {
+      "wilayah": 9,
+      "week_start": "2026-01-19",
+      "leads_count": 9,
+      "take_up_count": 8,
+      "take_up_rate": 88.89,
+      "avg_transaction_value": 3775000.0
+    },
+    {
+      "wilayah": 10,
+      "week_start": "2026-01-19",
+      "leads_count": 7,
+      "take_up_count": 5,
+      "take_up_rate": 71.43,
+      "avg_transaction_value": 26080000.0
+    },
+    {
+      "wilayah": 11,
+      "week_start": "2026-01-19",
+      "leads_count": 8,
+      "take_up_count": 6,
+      "take_up_rate": 75.0,
+      "avg_transaction_value": 4550000.0
+    },
+    {
+      "wilayah": 12,
+      "week_start": "2026-01-19",
+      "leads_count": 7,
+      "take_up_count": 6,
+      "take_up_rate": 85.71,
+      "avg_transaction_value": 9204166.67
+    },
+    {
+      "wilayah": 13,
+      "week_start": "2026-01-19",
+      "leads_count": 4,
+      "take_up_count": 4,
+      "take_up_rate": 100.0,
+      "avg_transaction_value": 806750.0
+    },
+    {
+      "wilayah": 14,
+      "week_start": "2026-01-19",
+      "leads_count": 4,
+      "take_up_count": 4,
+      "take_up_rate": 100.0,
+      "avg_transaction_value": 17648825.0
+    },
+    {
+      "wilayah": 15,
+      "week_start": "2026-01-19",
+      "leads_count": 4,
+      "take_up_count": 4,
+      "take_up_rate": 100.0,
+      "avg_transaction_value": 2125000.0
+    },
+    {
+      "wilayah": 16,
+      "week_start": "2026-01-19",
+      "leads_count": 7,
+      "take_up_count": 6,
+      "take_up_rate": 85.71,
+      "avg_transaction_value": 891666.67
+    },
+    {
+      "wilayah": 17,
+      "week_start": "2026-01-19",
+      "leads_count": 4,
+      "take_up_count": 3,
+      "take_up_rate": 75.0,
+      "avg_transaction_value": 2683333.33
+    }
   ]
 }
