@@ -718,8 +718,9 @@ async def regional_performance(
         regions.append(
             {
                 "wilayah": wil,
-                "leads_count": l_count,
-                "take_up_count": t_count,
+                "region_name": f"Wilayah {wil}",
+                "total_leads": l_count,
+                "total_take_up": t_count,
                 "take_up_rate": take_up_rate,
                 "avg_transaction_value": avg_transaction_value,
             }
@@ -749,7 +750,10 @@ async def regional_performance(
         status_code=200,
         content={
             "campaign_id": campaign_id,
+            "campaign_name": store.get_campaign(campaign_id).get("nama_program", campaign_id) if store.get_campaign(campaign_id) else campaign_id,
+            "flag_program": flag_program,
             "regions": regions,
+            "trend": selected_region_trend,
             "selected_region_trend": selected_region_trend,
             "flag_program_filter": flag_program,
         },
